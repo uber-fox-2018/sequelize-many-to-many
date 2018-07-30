@@ -54,10 +54,17 @@ subjectRoutes.post("/subjects/edit/:id", function(req, res) {
 
 subjectRoutes.get("/subjects/:id/enrolled-students", function(req, res) {
   let id = req.params.id;
-  models.Subject.findById(id).then(function(subjects) {
-    console.log(`>>>>>`,subjects.subjectName);
-    res.render("subject-ejs/subjectGiveScore", { subjects: subjects });
-  });
+  models.Subject.findById(id, {
+    include: [models.Student]
+  })
+    .then(function(subjects) {
+      console.log(`>>>>`, subjects[0]);
+
+      res.render("subject-ejs/subjectGiveScore", { subjects: subjects });
+    })
+    .catch(err => {
+      res.send(err.message);
+    });
 });
 
 module.exports = subjectRoutes;
