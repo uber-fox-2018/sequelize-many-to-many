@@ -1,0 +1,19 @@
+<% include partials/header %>
+<h1> Add Student Data </h1>
+<p> <a href="/students">show all data</a> </p>
+<div>
+    <form action="/students/add" method="POST">
+        <label for="fName">First Name</label>
+        <input type="text" name="first_name" placeholder="Steve" id="fName" required> <!-- name="first_name is the name attribute that we set on the input -->
+        <br>
+        <label for="lName">Last Name</label>
+        <input type="text" name="last_name" placeholder="Jobs" id="lName" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" placeholder="stevejobs@gmail.com" id="email" required>
+        <br>
+        <input type="submit" value="Add Student">
+    </form>
+</div>
+
+<% include partials/footer %>

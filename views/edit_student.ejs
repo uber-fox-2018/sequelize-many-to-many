@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+<h1> Edit Student Data </h1>
+<p> <a href="/students">show all data</a> </p>
+<div>
+    <% if(student!==null){ %>
+        <form action="/students/edit/<%= student.id %>" method="POST">
+            <label for="fName">First Name</label>
+            <input type="text" name="first_name" id="fName" value="<%= student.first_name %>" required> <!-- name="first_name is the name attribute that we set on the input -->
+            <br>
+            <label for="lName">Last Name</label>
+            <input type="text" name="last_name" id="lName" value="<%= student.last_name %>" required>
+            <br>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" value="<%= student.email %>" required>
+            <br>
+            <input type="submit" value="Edit Student">
+        </form>
+    <% }else{ %>
+        <h3>Ooopss..The id is not found</h3>
+    <% } %>
+</div>
+
+<% include partials/footer %>

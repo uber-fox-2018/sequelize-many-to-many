@@ -1,0 +1,14 @@
+<% include partials/header %>
+
+<h1> Add Subject Data </h1>
+<p> <a href="/subjects">show all data</a> </p>
+<div>
+    <form action="/subjects/add" method="POST">
+        <label for="subjectName">Subject Name</label>
+        <input type="text" name="subjectName" placeholder="Math" id="subjectName" required> 
+        <br>
+        <input type="submit" value="Add Subject">
+    </form>
+</div>
+
+<% include partials/footer %>

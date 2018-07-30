@@ -1,0 +1,41 @@
+<% include partials/header %>
+
+<h1> Add Teacher Data </h1>
+<p> <a href="/teachers">show all data</a> </p>
+<%if(err){%>
+    <div class="ui warning message">
+            <i class="close icon"></i>
+            <div class="header">
+              <%= err%>
+            </div>
+          </div>
+<%}%>
+
+<div>
+    <form action="/teachers/add" method="POST">
+        <label for="fName">First Name</label>
+
+        <% let output;%>
+        <%if(teacher === undefined){%>
+            <% output= {firstName:"", lastName:"", email:"", subjectId:""}%>
+        <%}else{%>
+            <% output=teacher; %>
+        <%}%>
+
+
+        <input type="text" name="firstName" value="<%=output.firstName%>" id="fName" required> <!-- name="first_name is the name attribute that we set on the input -->
+        <br>
+        <label for="lName">Last Name</label>
+        <input type="text" name="lastName"  value="<%=output.lastName%>" id="lName" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="text" name="email" value="<%=output.email%>" id="email" required>
+        <br>
+        <label for="subjectId">Subject Id</label>
+        <input type="text" name="subjectId"  value="<%=output.subjectId%>" id="subjectId" required>
+        <br>
+        <input type="submit" value="Add Teacher">
+    </form>
+</div>
+
+<% include partials/footer %>

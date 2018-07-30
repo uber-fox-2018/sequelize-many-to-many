@@ -1,0 +1,18 @@
+<% include partials/header %>
+
+<h1> Edit Subject Data </h1>
+<p> <a href="/subjects">show all data</a> </p>
+<div>
+    <% if(subject!==null){ %>
+        <form action="/subjects/edit/<%= subject.id %>" method="POST">
+            <label for="subjectName">Subject Name</label>
+            <input type="text" name="subjectName" id="subjectName" value="<%= subject.subjectName %>" required> 
+            <br>
+            <input type="submit" value="Edit Subject">
+        </form>
+    <% }else{ %>
+        <h3>Ooopss..The id is not found</h3>
+    <% } %>
+</div>
+
+<% include partials/footer %>
