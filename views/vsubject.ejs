@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Data Teachers</title>
+</head>
+<body>
+
+	<h2> All Teachers Data</h2>
+
+	<table border="0" width="100%">
+		<tr>
+			<th>Id</th>
+			<th>Subject Name</th>
+			<th>Teachers</th>
+		</tr>
+
+		<% subjects.forEach( (subject) => { %>
+
+		<tr>
+			<td><%= subject.id %></td>
+			<td><%= subject.name %></td>
+			<td>
+				<table>
+				<% let num = 1; subject.Teachers.forEach( (teacher) => { %> 
+				<tr>
+					<td> <%= num++ %> </td>
+					<td> <%= teacher.firstName %> </td>
+				</tr>
+				<% }) %>
+				</table>
+			</td>
+		</tr>
+
+		<% }) %>
+	
+	</table>
+
+</body>
+</html>
