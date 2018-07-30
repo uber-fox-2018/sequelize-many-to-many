@@ -1,18 +1,15 @@
 'use strict'
 
 const model = require('../../models')
+const Student = model.Student
 
 const get = (req, res) => {
     res.render("students/add", { validationErrors: [] })
 }
 
 const post = (req, res) => {
-    let obj = {
 
-    }
-
-    model
-        .Student
+    Student
         .create({
             first_name: req.body.first_name || null,
             last_name: req.body.last_name || null,

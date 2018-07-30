@@ -17,13 +17,14 @@
                 <a href="/students/add" class="btn btn-primary" role="button">Add Student</a>
             </div>
             <div class="row" style="padding: 15px">
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
+                            <th>Action</th>
                             <th>Options</th>
                         </tr>
                     </thead>
@@ -41,6 +42,9 @@
                                 </td>
                                 <td>
                                     <%=student.email%>
+                                </td>
+                                <td>
+                                    <a href="/students/<%=student.id%>/add-subject" role="button" class="btn btn-primary">Add Subject</a>
                                 </td>
                                 <td>
                                     <a href="/students/edit/<%=student.id%>" role="button" class="btn btn-success" >Edit</a>

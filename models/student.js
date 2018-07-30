@@ -22,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Student.associate = function (models) {
-    // associations can be defined here
+    const Subject = models.Subject
+    Student.belongsToMany(Subject, { through: 'Enrollment', foreignKey: 'student_id' })
   };
   return Student;
 };
