@@ -24,6 +24,7 @@
                                 <th>ID</th>
                                 <th>Subject Name</th>
                                 <th>Teachers</th>
+                                <th>Actions</th>
                                 <th>Options</th>
                             </tr>
                         </thead>
@@ -42,6 +43,9 @@
                                             <%= `${++i}. ${teacher.first_name} ${teacher.last_name}`%>
                                             <br>
                                         <%})%>
+                                    </td>
+                                    <td>
+                                        <a href="/subjects/<%=subject.id%>/enrolled-students" role="button" class="btn btn-info">Enrolled Students</a>
                                     </td>
                                     <td>
                                         <a href="/subjects/edit/<%=subject.id%>" role="button" class="btn btn-success">Edit</a>

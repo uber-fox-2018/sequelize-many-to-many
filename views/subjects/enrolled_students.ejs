@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <title>Subject</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+
+        <section style="padding-top: 80px">
+            <div class="container">
+                <div class="row" style="padding: 15px">
+                    <h2>
+                        <%=subject.subject_name%>
+                    </h2>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <a href="/subjects" role="button" class="btn btn-light">
+                        <span class="text text-info">List Subject</span>
+                    </a>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <table id="table-student" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Name</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%subject.Students.forEach(student => {%>
+                                <tr>
+                                    <td>
+                                        <input type="hidden" value="<%=student.id%>" />
+                                    </td>
+                                    <td>
+                                        <%=`${student.first_name} ${student.last_name}`%>
+                                    </td>
+                                    <td>
+                                        <%- giveScore(subject.id, student.Enrollment.score)%>
+                                    </td>
+                                </tr>
+                                <%})%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="modal fade" id="give_score_modal" tabindex="-1" role="dialog" aria-labelledby="give_score_modal_label" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <form action="/subjects/<%=subject.id%>/give-score" method="POST">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Give score</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input id="form-student-id" name="student_id" type="hidden" class="form-control" />
+                            <div class="form-group">
+                                <label>Student</label>
+                                <input id="form-student-name" type="text" disabled class="form-control">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>Score</label>
+                                <input id="form-student-score" name="score" type="number" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <input type="submit" role="button" class="btn btn-primary" value="Set Score"></button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <%- include('../partials/scripts') %>
+
+            <script>
+                $(function () {
+                    $(".give-score-button").click(function () {
+                        $("#give_score_modal").modal('show')
+                        const $row = $(this).closest("tr")
+                        const id = $row.find("td:first").find("input").val()
+                        const name = $row.find("td:nth-child(2)").text().trim()
+                        $('#form-student-id').val(id)
+                        $('#form-student-name').val(name)
+                    });
+                })
+            </script>
+</body>
+
+</html>

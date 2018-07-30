@@ -1,13 +1,16 @@
 const models = require('../../models')
+const Teacher = models.Teacher
+const subjectName = require('../../helpers/unassigned_subject')
 
 module.exports = (req, res) => {
-    models.Teacher
+
+    Teacher
         .findAll({
             include: ['Subject'],
             order: [['id']]
         })
         .then(teachers => {
-            res.render('teachers/', { teachers })
+            res.render('teachers/', { teachers, subjectName })
             // res.send(teachers)
         })
         .catch(err => {
