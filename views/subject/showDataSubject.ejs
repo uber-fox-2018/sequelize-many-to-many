@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        
+        #customers tr:nth-child(even){background-color: #f2f2f2;}
+        
+        #customers tr:hover {background-color: #ddd;}
+        
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        </style>
+</head>
+<body>
+        <%- include('../partial/header') %>
+    <h1>All Teachers Data</h1>
+    <h3><a href="/teacher/add">Add Data Teachers</a></h3>
+    <table id="customers">
+        <thead>
+            <tr>
+              <th>id</th>
+              <th>Subject Name</th>
+              <th>Teachers</th>
+              <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% dataSubjects.forEach(dataSubject =>{ %>
+            <tr>
+                <td><%= dataSubject.id %></td>
+                <td><%= dataSubject.subjectName %></td>
+                <td>
+                    <ol>
+                        <% dataSubject.Teachers.forEach(teacher =>{ %>
+                            <li><%= teacher.fullname() %></li>
+                        <% }) %>
+                    </ol>  
+                </td>
+                <td><a href="/subject/<%= dataSubject.id %>/enrolled-students">enroll student</a></td>
+                
+            </tr>
+            <% }) %>
+            
+        </tbody>
+      </table>
+</body>
+</html>
