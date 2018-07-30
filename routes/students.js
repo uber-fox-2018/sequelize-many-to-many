@@ -1,5 +1,7 @@
 const routes = require("express").Router();
-const controller = require("../controllers/request/subject_requestcontroller.js");
+const controller = require("../controllers/request/student_requestcontroller.js");
+const controllerEnrollment = require("../controllers/request/student_requestcontroller.js");
+
 
 routes.get("/", controller.viewall_get);
 
@@ -13,9 +15,8 @@ routes.get("/edit/:id", controller.edit_get);
 
 routes.post("/edit/:id",controller.edit_post);
 
-routes.post(":id/enrolled-students",controllerEnrollment.);
+routes.get("/:id/add-subject",controllerEnrollment.add_get);
 
-routes.post(":id/give-score", controller)
-
+routes.post("/:id/add-subject",controllerEnrollment.add_post);
 
 module.exports = routes;

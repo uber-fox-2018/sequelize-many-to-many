@@ -53,6 +53,10 @@ class TeacherController{
 		return Model.Teacher
 			.getKeys();
 	}
+
+	static getModel(){
+		return Model.Teacher;
+	}
 }
 
 module.exports = TeacherController;

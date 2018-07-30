@@ -1,5 +1,7 @@
 const SubjectController = require("./subjectcontroller.js");
 const TeacherController = require("./teachercontroller.js");
+const StudentController = require("./studentcontroller.js");
+const EnrollmentController = require("./enrollmentcontroller.js");
 
 class MainController{
 	constructor(){
@@ -10,6 +12,8 @@ class MainController{
 		switch(mainMenuOption){
 		case "teachers": return MainController.childMenu(TeacherController, secondaryCommand, commandArgsInArray);
 		case "subjects": return MainController.childMenu(SubjectController, secondaryCommand, commandArgsInArray);
+		case "students": return MainController.childMenu(StudentController, secondaryCommand, commandArgsInArray);
+		case "enrollments": return MainController.childMenu(EnrollmentController, secondaryCommand, commandArgsInArray);
 		}
 	}
 
@@ -21,6 +25,7 @@ class MainController{
 		case "edit": return controllerToExecute.update(commandArgsInArray);
 		case "delete": return controllerToExecute.delete(commandArgsInArray);
 		case "getKeys":return controllerToExecute.getKeys();
+		case "getModel":return controllerToExecute.getModel();
 		}
 	} 
 }

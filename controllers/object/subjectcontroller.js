@@ -6,7 +6,6 @@ class SubjectController{
 	}
 
 	static add([subjectName]){
-		console.log("subjejdsfaskdf", subjectName);
 		return Model.Subject
 			.create({
 				subjectName:subjectName

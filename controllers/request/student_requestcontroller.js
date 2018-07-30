@@ -1,7 +1,7 @@
 const RequestController = require("./requestcontroller.js");
-const section = "Subject";
+const section = "Student";
 
-class SubjectRequestController{
+class StudentRequestController{
 	constructor(){
 		
 	}
@@ -29,7 +29,23 @@ class SubjectRequestController{
 	static edit_post(req,res){
 		return RequestController.edit_post(section,req,res);
 	}
-	
+
+	static view_enrolled_get(req,res){
+		
+	}
+
+	static view_enrolled_post(req,res){
+		let Enrollment = RequestController.getModel("Enrollment");
+
+		Enrollment.update(
+			req.body
+			,{
+				returning: true, where: {id:req.params.id}
+			}
+		)
+			.then()
+			.catch();
+	}
 }
 
-module.exports = SubjectRequestController;
+module.exports = StudentRequestController;

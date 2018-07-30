@@ -5,6 +5,10 @@ class RequestController{
 
 	}
 
+	static passMainController(){
+		return MainMenu;
+	}
+
 	static viewall_get(section,req,res){
 		MainMenu(`${section.toLowerCase()}s`,"read_all")
 			.then((alldatas)=>{
@@ -85,6 +89,10 @@ class RequestController{
 			.catch((err)=>{
 				res.render("error", {err:err});
 			});
+	}
+
+	static getModel(section){
+		return MainMenu(`${section.toLowerCase()}s`,"getModel");
 	}
 
 }

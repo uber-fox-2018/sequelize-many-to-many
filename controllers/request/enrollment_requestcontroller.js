@@ -1,7 +1,7 @@
 const RequestController = require("./requestcontroller.js");
-const section = "Subject";
+const section = "Enrollment";
 
-class SubjectRequestController{
+class EnrollmentRequestController{
 	constructor(){
 		
 	}
@@ -29,7 +29,6 @@ class SubjectRequestController{
 	static edit_post(req,res){
 		return RequestController.edit_post(section,req,res);
 	}
-	
 }
 
-module.exports = SubjectRequestController;
+module.exports = EnrollmentRequestController;
