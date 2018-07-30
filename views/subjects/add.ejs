@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <title>Add Subject</title>
+</head>
+
+<body>
+    <%- include('../partials/nav')%>
+
+        <section style="padding-top: 80px">
+            <div class="container">
+                <div class="row" style="padding: 15px">
+                    <h2>Add subject</h2>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <form action="/subjects/add" method="POST">
+                        <div class="form-group">
+                            <label for="subject_name">Subject name</label>
+                            <input id="subject_name" name="subject_name" type="text" class="form-control">
+                        </div>
+                        <a href="/subject" class="btn btn-secondary">Cancel</a>
+                        <input type="submit" value="Add" role="button" class="btn btn-primary">
+                    </form>
+                </div>
+
+                <%- include('../partials/validation')%>
+                
+            </div>
+        </section>
+
+        <%- include('../partials/scripts')%>
+</body>
+
+</html>
