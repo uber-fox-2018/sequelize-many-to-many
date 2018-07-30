@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <center>
+            All Subjects Data
+        </center>
+    </h1>
+    <h3>
+        <center>
+            <a href="/subject/add">
+                Add Subject Data
+            </a>
+        </center>
+    </h3>
+    <%- include('../partials/styleTable') %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Subject Name</th>
+                    <th>Teacher</th>
+                    <th>Student</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%dataSubject.forEach(function(subject){%>
+                    <tr>
+                        <td>
+                            <%= subject.id %>
+                        </td>
+                        <td>
+                            <%= subject.subjectName %>
+                        </td>
+                        <td>
+                            <ol>
+                                <% subject.Teachers.forEach(function(teacher){%>
+                                    <li>
+                                        <%= teacher.getFullName() %>
+                                    </li>
+                                    <%})%>
+                            </ol>
+                        </td>
+                        <td>
+                            <ol>
+                                <% subject.Students.forEach(function(student){%>
+                                    <li>
+                                        <%= student.getFullName() %>
+                                    </li>
+                                    <%})%>
+                            </ol>
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+
+</body>
+
+</html>
