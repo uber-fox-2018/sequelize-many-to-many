@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Data Teachers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+    <%- include('../partials/style/tableStyles.ejs') %>
+    <!-- <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style> -->
+</head>
+<body>
+        <%- include('../partials/header/nav.ejs', {title: 'All Teachers Data', titleUrl: 'teachers/add', subTitle: 'Add Teacher'}) %>
+    <table>
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+           <% let no = 0  %>
+           <%  teachersData.forEach(teacherData => {  %>
+         <%   no++ %>
+                <tr>
+                    <td><%= no %></td>
+                    <td><%= teacherData.firstName %></td>
+                    <td><%= teacherData.lastName %></td>
+                    <td><%= teacherData.email %></td>
+                   <% if(teacherData.Subject) { %>
+                        <td><%= teacherData.Subject.subjectName %></td>
+                 <%   } else { %>
+                        <td>unassigned</td>
+                <%    } %>
+                    <td><a href="/teachers/edit/<%= teacherData.id %>">Edit</a> | <a href="/teachers/delete/<%= teacherData.id %>">Delete</a></td>
+                </tr>
+        <%    }) %>
+        </tbody>
+    </table>
+</body>
+</html>

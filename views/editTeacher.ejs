@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Teacher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+        <%- include('../partials/header/nav.ejs', {title: 'Edit Teacher', titleUrl: 'teachers', subTitle: 'Data Teachers'}) %>
+       <% if(err) {   %>
+            <h2 style="color: red"><%= err.message %></h2>
+     <%   } %>
+        <form action="/teachers/edit/<%= dataTeacher.id %>" method="post">
+            First Name: <br>
+            <input type="text" name="firstName" value="<%= dataTeacher.firstName %>"> <br>
+            Last Name: <br>
+            <input type="text" name="lastName" value="<%= dataTeacher.lastName %>"> <br>
+            Email: <br>
+            <input type="text" name="email" value="<%= dataTeacher.email %>"> <br>
+            Subject Name: <br>
+            <select name="SubjectId">
+             <%   dataSubjects.forEach(subjectData => { %>
+                   <% if(dataTeacher.SubjectId === subjectData.id) {  %>
+                        <option value="<%= subjectData.id %>"><%= subjectData.subjectName %></option>
+              <%    } else { %>
+                <option value="<%= subjectData.id %>"><%= subjectData.subjectName %></option>
+               <%     } %>
+             <%   }) %>
+            </select> <br><br>
+            <input type="submit" value="Submit">
+        </form>
+</body>
+</html>

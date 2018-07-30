@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Data Teachers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <%- include('../partials/style/tableStyles.ejs') %>
+</head>
+
+<body>
+  <%- include('../partials/header/nav.ejs', {title: 'All Subjects Data', titleUrl: 'subjects/add', subTitle: 'Add Subject'}) %>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Subject Name</th>
+          <th>Teachers</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% let no = 0  %>
+          <%  dataSubjects.forEach(dataSubject => {  %>
+            <%   no++ %>
+              <tr>
+                <td>
+                  <%= no %>
+                </td>
+                <td>
+                  <%= dataSubject.subjectName %>
+                </td>
+                <td>
+                  <ol>
+                    <% dataSubject.Teachers.forEach(teacher => { %>
+                      <li>
+                        <%= `${teacher.firstName} ${teacher.lastName}` %>
+                      </li>
+                      <%  }) %>
+                  </ol>
+                </td>
+                <td><a href="/students/<%= dataSubject.id %>/enrolled-students">Enrolled Students</a></td>
+              </tr>
+        <%  }) %>
+      </tbody>
+    </table>
+</body>
+
+</html>
