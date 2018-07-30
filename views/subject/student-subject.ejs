@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<%- include('../partials/head', { title: 'Data Subject' }) %>
+
+  <body>
+    <%- include('../partials/navbar') %>
+      <br>
+      <br>
+      <br>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <center>
+              <h1>
+                <%= title %>
+              </h1>
+            </center>
+            <% if (message) { %>
+              <h5><%= message %></h5>
+            <% } %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name Student</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.Students.forEach(data => { %>
+                  <tr>
+                    <td>
+                      <%= data.id %>
+                    </td>
+                    <td>
+                      <%= data.first_name + " " + data.last_name %>
+                    </td>
+                    <td>
+                      <%= data.StudentSubject.score %>
+                    </td>
+                    <td>
+                      <a href="/subjects/<%= data.id %>/<%= subjectId %>/give-score" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Give Score</a>
+                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Input Score</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form action="/subjects/<%= data.id %>/<%= subjectId %>/give-score" method="POST">
+                                <input type="text" class="form-control" name="score" placeholder="Input score">
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                              </form>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <%- include('../partials/script') %>
+  </body>
+
+</html>
