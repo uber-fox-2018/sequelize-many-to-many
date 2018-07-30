@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+
+    <% if (error !== null) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+        <%} %>
+            <div>
+                <form action="/students/edit/<%= editStudent.id %>" method="POST">
+                    First Name:
+                    <br>
+                    <input type="text" name="firstName" value="<%= editStudent.firstName %>">
+                    <br>
+                    <br> Last Name:
+                    <br>
+                    <input type="text" name="lastName" value="<%= editStudent.lastName %>">
+                    <br>
+                    <br> Email:
+                    <br>
+                    <input type="text" name="email" value="<%= editStudent.email %>">
+                    <br>
+                    <br>
+                    <button type="submit" value="Confirm Edit">Confirm Edit</button>
+                </form>
+            </div>
+            <br>
+            <div align="left">
+                <a href="/students" class="btn btn-primary" role="button">Back to Students List</a>
+                <a href="/" class="btn btn-primary" role="button">Back to Homepage</a>
+            </div>
+</body>
+
+</html>
