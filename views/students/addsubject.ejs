@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Edit Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <% if (error !== null) { %>
+        <%= error %>
+            <% } %>
+                <h2>Add Subject To Student</h2>
+                <form action="/students/<%=studentsData.id%>/add-subject" method="POST">
+                    First name:
+                    <br>
+                    <input type="text" name="firstName" value="<%=studentsData.firstName %>">
+                    <br> 
+                    <br>
+                    Last name:
+                    <br>
+                    <input type="text" name="lastName" value="<%=studentsData.lastName %>">
+                    <br> 
+                    <br>
+                    Email:
+                    <br>
+                    <input type="text" name="email" value="<%=studentsData.email %>">
+                    <br> 
+                    <br>
+                    Choose Subject:
+                    <br>
+                    <select name="SubjectId">
+                        <% subjectsData.forEach(subject => { %>
+                            <option value="<%= subject.id %>">
+                                <%= subject.subjectName %>
+                            </option>
+                            <% }) %>
+                    </select>
+                    <br>
+                    <br>
+                    <button type="submit" value="Add Subject">Add Subject</button>
+                </form>
+                <br>
+                <div align="center">
+                <a href="/students" class="btn btn-primary" role="button">Back to Students List</a>
+            </div>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Teacher's Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="vertical-center-row">
+            <div align="left">
+                <h1>
+                    <%= title %>
+                </h1>
+         
+                <% if (error !== null) { %>
+                    <div class="alert alert-danger"><%= error %></div>
+                  <% } %>
+            </div>
+                <div>
+                    <form action="/teachers/add" method="POST">
+                        First Name:
+                        <br>
+                        <input type="text" name="firstName" placeholder="First Name">
+                        <br>
+                        <br> Last Name:
+                        <br>
+                        <input type="text" name="lastName" placeholder="Last Name">
+                        <br>
+                        <br> Email:
+                        <br>
+                        <input type="text" name="email" placeholder="Email">
+                        <br>
+                        <br> Subject:
+                        <input type="text" name="SubjectId" placeholder="Input Subject ID">
+                        <br>
+                        <br>
+                        <button type="submit" value="Submit">Submit</button>
+                    </form>
+                </div>
+                <br>
+                <div align="left">
+                    <a href="/teachers" class="btn btn-primary" role="button">Teachers List</a>
+                    </button>
+                    <a href="/" class="btn btn-primary" role="button">Back to Homepage</a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
