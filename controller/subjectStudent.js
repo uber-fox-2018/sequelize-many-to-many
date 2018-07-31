@@ -1,17 +1,13 @@
 const Model = require('../models/index')
 
 class Controller{
-    static create(value){
-        return new Promise(function(res,rej){
-            Model.SubjectStudents.create(value)
-            
-            .then((data) =>{
-                res(data)
-            })
-            .catch(err =>{
-                rej(err)
-            })
-        })
+    static update(value, condition){
+        return Model.SubjectStudent.update(value,condition)
+    }
+
+    static findById(id){
+        return Model.SubjectStudent.findById(id)
     }
 }
+
 module.exports = Controller

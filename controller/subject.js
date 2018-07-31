@@ -17,19 +17,7 @@ class Controller{
     }
 
     static findById(id){
-        return new Promise(function(res,rej){
-            Model.Subject.findById(id,{
-                
-            })
-
-            .then(data =>{
-                res(data)
-            })
-
-            .catch(err =>{
-                rej(err)
-            })
-        })
+        return Model.Subject.findById(id,{include : Model.Student})
     }
 
 }

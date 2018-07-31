@@ -4,11 +4,49 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+        </style>
 </head>
 <body>
     <h1 align='center'><%= data.subjectName %></h1>
     <h3 align='center'>
         <a href="/subject">return to subject list</a>
     </h3>
+
+        <table>
+        <tr>
+            <th>Student</th>
+            <th>Score</th>
+            <th>Give Score</th>
+        </tr>
+        <% data.Students.forEach(student =>{ %>
+        <tr>
+            <td><%= student.firstName %></td>
+            <td><%= student.SubjectStudent.score %></td>
+             <!-- <td><%= student.id %></td> -->
+            <td>
+                <a href="/subject/<%=student.id%>/givescore">give score</a>
+            </td>
+        </tr>
+        <% }) %>  
+     
+        
+        </table>
+
 </body>
 </html>

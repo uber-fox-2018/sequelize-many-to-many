@@ -39,7 +39,7 @@
               <th>id</th>
               <th>Subject Name</th>
               <th>Teachers</th>
-              <th>Actions</th>
+              <th>action</th>
             </tr>
         </thead>
         <tbody>
@@ -54,8 +54,9 @@
                         <% }) %>
                     </ol>  
                 </td>
-                <td><a href="/subject/<%= dataSubject.id %>/enrolled-students">enroll student</a></td>
-                
+                <td>
+                    <a href="/subject/<%= dataSubject.id %>/enroll-student">enroll</a>
+                </td>
             </tr>
             <% }) %>
             
