@@ -1,5 +1,6 @@
 const routes = require('express').Router()
 const Controller = require('../../controllers/student')
+const Models = require('../../models')
 
 routes.get('/', function (req, res) {
     Controller.showAll()
@@ -31,7 +32,7 @@ routes.get('/add', function (req, res) {
 
 routes.post('/add', function (req, res) {
     Controller.add(req.body.fname, req.body.lname, req.body.email, req.body.subjectId)
-    res.redirect('/teacher')
+    res.redirect('/teachers')
     // res.send('ini form teacher')
 
 })
@@ -51,7 +52,7 @@ routes.post('/edit/:id', function (req, res) {
 
     Controller.update(req.body.fname, req.body.lname, req.body.email, req.body.subjectId, req.params.id)
         .then(function () {
-            res.redirect('/teacher')
+            res.redirect('/teachers')
         })
         .catch(function (err) {
             Controller.showById(req.params.id)
@@ -68,7 +69,7 @@ routes.post('/edit/:id', function (req, res) {
 
 routes.get('/delete/:id', function (req, res) {
     Controller.delete(req.params.id)
-    res.redirect('/student')
+    res.redirect('/students')
 
 })
 
@@ -83,8 +84,13 @@ routes.get('/:id/addSubject',function(req,res){
 })
 
 routes.post('/:id/addSubject',function(req,res){
+    // Models.StudenSubject
+    // .create({
+    //     SubjectId: req.body.subjectId,
+    //     StudentId:req.params.id
+    // })
     Controller.addSubject(req.params.id,req.body.subjectId)
-    res.redirect('/subject')
+    res.redirect('/subjects')
 })
 
 module.exports = routes

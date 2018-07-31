@@ -16,10 +16,13 @@
     </h1>
     <h3>
         <center>
-            <a href="/subject/add">
+            <a href="/subjects/add">
                 Add Subject Data
             </a>
         </center>
+        <a href="/">
+            back to Homepage
+        </a>
     </h3>
     <%- include('../partials/styleTable') %>
         <table>
@@ -29,6 +32,7 @@
                     <th>Subject Name</th>
                     <th>Teacher</th>
                     <th>Student</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -57,6 +61,9 @@
                                     </li>
                                     <%})%>
                             </ol>
+                        </td>
+                        <td>
+                            <a href="/subjects/<%= subject.id %>/enrolled-students">Enrolled Students</a>
                         </td>
                     </tr>
                     <%})%>

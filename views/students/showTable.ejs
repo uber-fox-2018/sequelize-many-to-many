@@ -20,6 +20,9 @@
                 Add Student Data
             </a>
         </center>
+        <a href="/">
+            back to Homepage
+        </a>
     </h3>
     <%- include('../partials/styleTable') %>
         <table>
@@ -49,12 +52,12 @@
                             <%= student.email %>
                         </td>
                         <td>
-                            <a href="/student/<%= student.id %>/addSubject">add subject</a>
+                            <a href="/students/<%= student.id %>/addSubject">add subject</a>
                         </td>
                         <td>
                             <!-- <tr> -->
-                            <a href="/student/edit/<%= student.id%>">edit |</a>
-                            <a href="/student/delete/<%= student.id%>">delete</a>
+                            <a href="/students/edit/<%= student.id%>">edit |</a>
+                            <a href="/students/delete/<%= student.id%>">delete</a>
                             <!-- </tr> -->
                         </td>
                     </tr>

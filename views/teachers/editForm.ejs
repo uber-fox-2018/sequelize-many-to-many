@@ -11,7 +11,7 @@
         <%if(err !== null){%>
             <h2><%= err.message %></h2>
         <%}%>
-        <form action="/teacher/edit/<%= dataTeacher.id %>" method="POST">
+        <form action="/teachers/edit/<%= dataTeacher.id %>" method="POST">
             First name:
             <br>
             <input type="text" name="fname"  placeholder="" value="<%= dataTeacher.firstName %>">

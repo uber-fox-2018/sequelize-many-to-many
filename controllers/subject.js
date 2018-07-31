@@ -7,7 +7,7 @@ class Controller{
             Model.Subject
                 .findAll({
                     attributes: ['id', 'subjectName'],
-                    include: [{ model: [Model.Teacher,Model.Student] }],
+                    include: [{ model: Model.Student }, {model: Model.Teacher}],
                     order: [['id', 'ASC']],
                 })
                 .then(function (data) {

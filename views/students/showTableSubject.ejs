@@ -38,7 +38,7 @@
             </tr>
         </table>
         <h3>Choose Subject</h3>
-        <form action="/student/<%= dataStudent.id %>" method="POST">
+        <form action="/students/<%= dataStudent.id%>/addSubject %>" method="POST">
             <select name="subjectId">
                 <% dataSubject.forEach(function(subject){%>
                     <option value="<%= subject.id %>">
@@ -46,7 +46,7 @@
                     </option>
                     <%})%>
             </select>
-            <input method="post" type="submit" value="Add Subject">
+            <input type="submit" value="Add Subject">
         </form>
 </body>
 

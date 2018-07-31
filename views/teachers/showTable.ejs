@@ -16,10 +16,14 @@
     </h1>
     <h3>
         <center>
-            <a href="/teacher/add">
+            <a href="/teachers/add">
                 Add Teachers Data
             </a>
+            
         </center>
+        <a href="/">
+            back to Homepage
+        </a>
     </h3>
     <%- include('../partials/styleTable') %>
         <table>
@@ -57,8 +61,8 @@
                         </td>
                         <td>
                             <!-- <tr> -->
-                            <a href="/teacher/edit/<%= teacher.id%>">edit |</a>
-                            <a href="/teacher/delete/<%= teacher.id%>">delete</a>
+                            <a href="/teachers/edit/<%= teacher.id%>">edit |</a>
+                            <a href="/teachers/delete/<%= teacher.id%>">delete</a>
                             <!-- </tr> -->
                         </td>
                     </tr>
