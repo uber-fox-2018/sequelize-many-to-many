@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Enrolled Students</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <%- include('../partials/style/tableStyles.ejs') %>
+</head>
+
+<body>
+  <%  for(let i = 0; i < dataSubjectStudents.length; i++) { %>
+    <% if(dataSubjectStudents[i].Subject.id === Number(id)) {  %>
+      <h1 style="text-align: center">
+        <%= dataSubjectStudents[i].Subject.subjectName %>
+      </h1>
+      <h3 style="text-align: center">
+        <a href="/subjects">Return To Subject List</a>
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%  dataSubjectStudents[i].Subject.Students.forEach(student => { %>
+            <tr>
+              <form action="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score" method="POST">
+                <td>
+                  <%= `${student.firstName} ${student.lastName}` %>
+                </td>
+                <td>
+                  <a href="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score">Give Score</a>
+                </td>
+              </form>
+            </tr>
+            <%  }) %>
+        </tbody>
+      </table>
+      <%  break; %>
+        <%  } %>
+          <%    } %>
+</body>
+
+</html>
