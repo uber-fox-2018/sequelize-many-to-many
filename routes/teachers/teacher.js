@@ -26,7 +26,7 @@ routes.get('/add', function (req, res) {
             res.render('./teachers/addForm', { dataSubject: subject })
         })
         .catch(function () {
-
+            
         })
     // res.send('ini form teacher')
 

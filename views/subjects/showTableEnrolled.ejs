@@ -26,7 +26,8 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Score</th>
+                    <th>Score By Number</th>
+                    <th>Score By Letter</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,7 +37,14 @@
                             <%= student.getFullName() %>
                         </td>
                         <td>
-                            <a href="<%= dataSubject.id %>/give-score">give score</a>
+                            <%if(student.StudentSubject.score === null){%>
+                                <a href="/subjects/<%= student.id %>/give-score">give score</a>
+                                <%}else if(student.StudentSubject.score !== 0){%>
+                                    <%= student.StudentSubject.score %>
+                                        <%}%>
+                        </td>
+                        <td>
+                            <%= scoreRating(student.StudentSubject.score)%>
                         </td>
                     </tr>
                     <%})%>

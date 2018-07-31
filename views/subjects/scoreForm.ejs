@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <h1> Add Student Score </h1>
+    <%- include('../partials/styleTable') %>
+        <table>
+            <tr>
+                <td>
+                    First Name
+                </td>
+                <td>
+                    <%= dataStudentSubject.Student.firstName%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name
+                </td>
+                <td>
+                    <%= dataStudentSubject.Student.lastName%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email
+                </td>
+                <td>
+                    <%= dataStudentSubject.Student.email%>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Score
+                </td>
+                <td>
+                    <form action="/subjects/<%= dataStudentSubject.StudentId %>/give-score/<%= dataStudentSubject.SubjectId %>" method="POST">
+                        <input type="text" name="score" placeholder="insert score number here">
+                        <input type="submit" value="Submit Score">
+                    </form>
+                </td>
+            </tr>
+        </table>
 </body>
+
 </html>
