@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All Subjects Data</title>
+</head>
+
+<body>
+    <center>
+        <h1>All Subjects Data</h1>
+    </center>
+    <table border="1px">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Subject Name</th>
+                <th>Teacher</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% data.forEach(subject => { %>
+                <tr>
+                    <td>
+                        <%= subject.dataValues.id %>
+                    </td>
+                    <td>
+                        <%= subject.dataValues.name %>
+                    </td>
+                    <td>
+                        <% let generator = 1%>
+                        <% for(let i = 0 ; i < subject.dataValues.Teachers.length ;i++){ %>
+                            <%= generator %>.
+                            <% generator++ %>
+                            <%= subject.dataValues.Teachers[i].firstName %>
+                            <%= subject.dataValues.Teachers[i].lastName %>
+                            <br>
+                        <% } %>
+                    </td>
+                    
+                        <td><a href="/subjects/<%= subject.dataValues.id%>/enrolled-students">Enrolled Students</a></td>
+                </tr>
+                <% }); %>
+        </tbody>
+    </table>
+</body>
+
+</html>
