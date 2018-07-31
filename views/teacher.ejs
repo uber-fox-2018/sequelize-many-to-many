@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%=title%>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%=header%>
+    </h1>
+    <a href="teacher/add">Add</a>
+    <br><br>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Option</th>
+        </tr>
+        <%for (let i = 0; i < data.length; i++) {%>
+            <tr>
+                <td>
+                    <%= data[i].id%>
+                </td>
+                <td>
+                    <%= data[i].firstName%>
+                </td>
+                <td>
+                    <%= data[i].lastName%>
+                </td>
+                <td>
+                    <%= data[i].email%>
+                </td>
+                <td>
+                    <%= (data[i].Subject !== null) ? data[i].Subject.subjectName : 'Unassinged'%>
+                </td>
+                <td>
+                    <a href="/teacher/<%= data[i].id%>/delete" title="<%= data[i].id%>">
+                        Delete
+                    </a>
+                    |
+                    <a href="/teacher/<%= data[i].id%>/update" title="<%= data[i].id%>">
+                        Update
+                    </a>
+                </td>
+            </tr>
+            <%}%>
+    </table>
+</body>
+
+</html>
