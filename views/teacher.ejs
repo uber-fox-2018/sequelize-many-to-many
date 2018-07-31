@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>teacher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="main.js"></script>
+</head>
+<body><br>
+    <div class="container" style="text-align: right">
+    <div class="container" style="text-align: center">
+            <h1>Teacher Data</h1>
+            <button type="button" class="btn btn-primary" onclick="location.href = '/teacher/add'">Add Teacher</button>  
+            <br><br>
+            <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% teacher.forEach((data) => { %>
+                    <tr>
+                    <td><%=data.id %></td>
+                    <td><%=data.firstName %></td>
+                    <td><%=data.lastName %></td>
+                    <td><%=data.email %></td>
+                        <% if(data.SubjectId == null) { %>
+                            <td>unassigned</td>
+                        <%} else { %>
+                            <td><%= data.Subject.name %></td>
+                        <%} %>
+                    <td>
+                        <a href = '/teacher/edit/<%=data.id%>' class="badge badge-success">Edit</a>
+                        <a href = '/teacher/delete/<%=data.id%>' onclick="return confirm('Are you sure you want to delete this data?');" class="badge badge-success">Delete</a>
+                    </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            </div><br>
+        </div> 
+        <button type="button" class="btn btn-primary" onclick="location.href = '/'">Back</button>  
+    </div>
+    
+</body>
+</html>

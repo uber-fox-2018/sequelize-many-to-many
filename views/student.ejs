@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>  
+    <script src="main.js"></script>
+</head>
+<body><br>
+    <div class="container" style="text-align: right">
+    <div class="container" style="text-align: center">
+            <h1>Student Data</h1>
+            <button type="button" class="btn btn-primary" onclick="location.href = '/student/add'">Add Student</button>  
+            <br><br>
+            <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Add Subject</th>
+                    <th scope="col">Options</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% dataStudent.forEach((student) => { %>
+                    <tr>
+                    <td><%=student.id %></td>
+                    <td><%=student.firstName %></td>
+                    <td><%=student.lastName %></td>
+                    <td><%=student.email %></td>
+                    <td><a href = '/student/<%=student.id%>/addsubject'  class="badge badge-success">Add Subject</a></td>
+                    <td><a href = '/student/edit/<%=student.id%>' class="badge badge-success">Edit</a>
+                        <a href = '/student/delete/<%=student.id%>' onclick="return confirm('Are you sure you want to delete this data?');" class="badge badge-success">Delete</a>
+                    </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            </div><br>
+        </div> 
+        <button type="button" class="btn btn-primary" onclick="location.href = '/'">Back</button>  
+    </div> 
+</body>
+</html>
