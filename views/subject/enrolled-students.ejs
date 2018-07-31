@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enrolled Students</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container text-center">
+        <h1><%=data_subjects.subjectName%></h1>
+        <a href="/subjects">Return to Subject List</a>
+    </div>
+
+    <div class="container text-center">
+        <table class="table">
+           <thead class="thead thead-dark">
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Score Letter</th>
+                </tr>
+           </thead>
+           <tbody>
+               <% data_subjects.Students.forEach((students) => { %>
+                    <tr>
+                        <td><%= students.firstName %> <%= students.lastName %></td>
+                        <% if (students.StudentSubject.score == null) { %>
+                            <td><a href="/subjects/<%= students.id %>/give-score">Give Score</a></td>
+                        <% } else { %>
+                            <td> <%= students.StudentSubject.score %></td>
+                        <% } %>
+                        <td><%= getScore(students.StudentSubject.score) %></td>
+                    </tr>
+               <% }) %>
+           </tbody>
+        </table>
+    </div>
+</body>
+</html>
