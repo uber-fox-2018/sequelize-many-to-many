@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table style="width:70%" border=1>
+        <tr>
+            <th>
+                <center>Id</center>
+            </th>
+            <th>
+                <center>Subject Name</center>
+            </th>
+
+            <th>
+                <center>Teacher</center>
+            </th>
+            <th>
+                <center>Students</center>
+            </th>
+
+            <% subjects.forEach(subject =>{ %>
+        </tr>
+        <tr>
+
+            <td>
+                <center>
+                    <%= subject.id %>
+                </center>
+
+            </td>
+
+            <td>
+                <center>
+                    <%= subject.subjectName %>
+
+                </center>
+            </td>
+
+            <td>
+                <center>
+                    <% let i=0 %>
+                        <% subject.Teachers.forEach( teacher => { %>
+                            <%=  `${++i}. ${teacher.firstName} ${teacher.lastName}` %>
+                                <br>
+                                <% }) %>
+                </center>
+            </td>
+            <td>
+                <center>
+
+                    <a href="/subjects/<%=subject.id%>/enrolled-students"> add score</a>
+                </center>
+            </td>
+            <% }) %>
+    </table>
+</body>
+
+</html>

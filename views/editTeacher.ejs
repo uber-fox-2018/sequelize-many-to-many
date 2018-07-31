@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        
+        <h4>EDIT DATA</h4>
+        <%= validationErrors %>
+        <form action="/teachers/edit/<%=teacher.id%>" method="post" id="form2">
+            first name : <input type='text' name='firstName' value ='<%= teacher.firstName %>'><br>
+            last name  : <input type='text' name='lastName'value = '<%= teacher.lastName %>'><br>
+            email : <input type='text' name='email' value = '<%= teacher.email %>'><br>
+            subjectId  : <input type='text' name='subjectId'value = '<%= teacher.subjectId %>'><br>
+            <button type="submit" form="form2" value="Edit">Edit </button>                
+</body>
+
+</html>
