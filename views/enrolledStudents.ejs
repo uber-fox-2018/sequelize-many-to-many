@@ -30,12 +30,12 @@
         <tbody>
           <%  dataSubjectStudents[i].Subject.Students.forEach(student => { %>
             <tr>
-              <form action="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score" method="POST">
+              <form action="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score/<%= student.id %>" method="POST">
                 <td>
                   <%= `${student.firstName} ${student.lastName}` %>
                 </td>
                 <td>
-                  <a href="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score">Give Score</a>
+                  <a href="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score/<%= student.id %>">Give Score</a>
                 </td>
               </form>
             </tr>

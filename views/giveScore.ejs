@@ -25,18 +25,27 @@
           <tr>
             <th>Name</th>
             <th>Score</th>
+            <th>Grade</th>
           </tr>
         </thead>
         <tbody>
           <%  dataSubjectStudents[i].Subject.Students.forEach(student => { %>
             <tr>
-              <form action="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score" method="POST">
+              <form action="/subjects/<%= dataSubjectStudents[i].Subject.id %>/give-score/<%= student.id %>" method="POST">
                 <td>
                   <%= `${student.firstName} ${student.lastName}` %>
                 </td>
                 <td>
-                  <%= dataSubjectStudents[i].score %>
+               <%   if( student.StudentSubject.score) {   %>
+                    <%= student.StudentSubject.score %>
+           <%       } else {   %>
+                    <input type="text" name="score">
+                    <input type="submit" name="Submit">
+            <%      }   %>
                 </td>
+                <td>
+                   <%= showGrade(student.StudentSubject.score) %>
+                  </td>
               </form>
             </tr>
             <%  }) %>

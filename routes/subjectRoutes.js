@@ -1,8 +1,9 @@
-const routes = require('express').Router()
+const router = require('express').Router()
 const Controller = require('../controllers/controllers')
 const ControllerSubjects = Controller.ControllerSubjects
+const ControllerStudents = Controller.ControllerStudents
 
-routes.get('/', function(req, res) {
+router.get('/', function(req, res) {
     // res.send('masuk subject')
     ControllerSubjects.showSubjects()
     .then(dataSubjects => {
@@ -14,7 +15,21 @@ routes.get('/', function(req, res) {
     })
 })
 
-routes.get('/:id/give-score', function(req, res) {
+router.get('/:id/enrolled-students', function(req, res) {
+    // res.send('masuk')
+    let id = req.params.id
+    ControllerStudents.enrolledStudents()
+        .then(dataSubjectStudents => {
+            res.render('enrolledStudents', {dataSubjectStudents, id})
+            // res.json(dataSubjectStudents)
+        })
+        .catch(err => {
+            res.send(err)
+        })
+})
+
+
+router.get('/:id/give-score/:studentId', function(req, res) {
     // console.log('masuk');
     let id = req.params.id
     // console.log(req.body);
@@ -28,5 +43,22 @@ routes.get('/:id/give-score', function(req, res) {
     })
 })
 
+router.post('/:id/give-score/:studentId', function(req, res) {
+    let id = req.params.id
+    let studentId = req.params.studentId
+    let score = req.body.score
+    // res.send(req.body)
+    // console.log(id, studentId, score);
+    
+    ControllerSubjects.giveScore(score, id ,studentId)
+    .then(msg => {
+        // res.json(data)
+        res.redirect(`/subjects/${id}/give-score/${studentId}`)
+    })
+    .catch(err => {
+        res.send(err)
+    })
+})
 
-module.exports = routes
+
+module.exports = router

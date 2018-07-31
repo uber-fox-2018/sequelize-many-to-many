@@ -41,7 +41,28 @@ class ControllerSubject {
               reject(err)
             })
         })
-      }
+    }
+
+    static giveScore(score, subId, studId) {
+      return new Promise(function(resolve, reject) {
+        Model
+          .StudentSubject
+          .update({
+            score: score
+          },{
+            where: {
+              StudentId: studId,
+              SubjectId: subId
+            }
+          })
+          .then(data => {
+            resolve(data)
+          })
+          .catch(err => {
+            reject(err)
+          })
+      })
+    }
 }
 
 module.exports = ControllerSubject
