@@ -96,7 +96,6 @@ module.exports = {
             include: [models.StudentSubject]
         })
             .then(students => {
-                console.log('=====', students.scoreHelper)
                 res.render('./subjects/givescore', { 
                     title: `Give Score`, 
                     SubjectId: req.params.idSubject, 
