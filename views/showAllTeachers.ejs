@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+        <center><a href="/teachers/add">ADD TEACHER</a></center>
+    <table style="width:70%" border=1>
+        <tr>
+            <th>
+                <center>Id</center>
+            </th>
+            <th>
+                <center>Firstname</center>
+            </th>
+            <th>
+                <center>Lastname</center>
+            </th>
+            <th>
+                <center>Email</center>
+            </th>
+            <th>
+                <center>Subject</center>
+            </th>
+            <th>
+                <center>Options</center>
+            </th>
+            <% teachers.forEach(teacher =>{ %>
+        </tr>
+        <tr>
+
+            <td>
+                <center>
+                    <%= teacher.dataValues.id %>
+                </center>
+
+            </td>
+
+            <td>
+                <center>
+                    <%= teacher.dataValues.firstName %>
+
+                </center>
+            </td>
+            <td>
+                <center>
+                    <%= teacher.dataValues.lastName %>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <%= teacher.dataValues.email %>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <%= teacher.dataValues.Subject !== null ? teacher.dataValues.Subject.subjectName : 'unnasign'  %>
+                </center>
+            </td>
+
+            <td>
+                    <center>
+                       <a href="/teachers/edit/<%=teacher.id %>">EDIT</a> | <a href="/teachers/delete/<%=teacher.id %>">DELETE</a>
+                    </center>
+                </td>
+            <% }) %>
+    </table>
+</body>
+
+</html>

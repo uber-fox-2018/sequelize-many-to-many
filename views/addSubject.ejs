@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>
+                <center>Id</center>
+            </th>
+            <th>
+                <center>Subject Name</center>
+            </th>
+            
+        </tr>
+
+        <tr>
+                
+                <td>
+                        <% student.Subjects.forEach(subject =>{ %>
+                            <%= subject.id %> <br>
+                       <% }) %>
+                </td>       
+                
+            <td>
+                    <% student.Subjects.forEach(subject =>{ %>
+                        <%= subject.subjectName %> <br>
+                        <% }) %>
+            </td>
+        </tr>
+    </table>
+    <h4>ADD SUBJECT</h4>
+
+    <form action="/students/<%=student.id%>/add-subject" id="subject" method="post">
+        <select name="subjectId" form="subject">
+                <option value=1>Biologi</option>
+                <option value=2>Kimia</option>
+                <option value=3>Matematika</option>
+                <option value=4>Sosiologi</option>
+                
+              </select> 
+        <input type="submit" value="add">
+        <a href="/students"><button type="submit" form="form2" >back </button></a>
+      </form>
+      
+     
+      
+</body>
+
+</html>

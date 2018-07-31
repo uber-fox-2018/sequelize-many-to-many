@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <center>
+        <a href="/students/add">ADD STUDENT</a>
+    </center>
+    <table style="width:70%" border=1>
+        <tr>
+            <th>
+                <center>Id</center>
+            </th>
+            <th>
+                <center>Firstname</center>
+            </th>
+            <th>
+                <center>Lastname</center>
+            </th>
+            <th>
+                <center>Email</center>
+            </th>
+            <th>
+                <center>Subject</center>
+            </th>
+
+            <th>
+                <center>Options</center>
+            </th>
+            <% students.forEach(student =>{ %>
+        </tr>
+        <tr>
+
+            <td>
+                <center>
+                    <%= student.dataValues.id %>
+                </center>
+
+            </td>
+
+            <td>
+                <center>
+                    <%= student.dataValues.firstName %>
+
+                </center>
+            </td>
+            <td>
+                <center>
+                    <%= student.dataValues.lastName %>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <%= student.dataValues.email %>
+                </center>
+            </td>
+            <td>
+                <center>
+                    <% let i=0 %>
+                    <% student.Subjects.forEach( subject =>{ %>
+                        <%= ` ${++i}. ${subject.subjectName}` %> <br>
+                   <% }) %>
+                </center>
+            </td>
+
+
+            <td>
+                <center>
+                    <a href="/students/edit/<%=student.id %>">EDIT</a> |
+                    <a href="/students/delete/<%=student.id %>">DELETE</a>|
+                    <a href="/students/<%=student.id %>/add-subject">ADD SUBJECT</a>
+                </center>
+            </td>
+            <% }) %>
+    </table>
+</body>
+
+</html>
