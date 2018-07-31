@@ -1,0 +1,38 @@
+
+<% include ../partials/header %>
+
+<%if(subject===undefined){%>
+  <h1>Subject is not found!</h1>
+<%}else{%>
+  <h1><%= subject.subjectName %></h1>
+  <h3><a href="/subjects">Return to subject list</a></h3>
+
+<table class="ui single line table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Full Name</th>
+      <th>Score By Number</th>
+      <th>Score By Letter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% subject.Students.forEach(student=>{ %>
+        <tr>
+            <td><%= student.id %></td>
+            <td><%= student.first_name%> <%= student.last_name %></td>
+            <% if (student.StudentSubject.Score) { %>
+            <td><%= student.StudentSubject.Score %></td>
+            <% } else { %>
+            <td><a href="/subjects/<%= student.StudentSubject.subjectId %>/give-score/<%=student.StudentSubject.studentId%>">Give Score</a></td>
+            <% } %>  
+            <td><%= scoreConversion(student.StudentSubject.Score)%></td>
+        </tr>
+    <% }) %>
+  </tbody>
+</table>
+<%}%>
+ 
+
+
+<% include ../partials/footer %>
