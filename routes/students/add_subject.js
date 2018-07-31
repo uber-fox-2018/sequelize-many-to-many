@@ -19,19 +19,21 @@ get = (req, res) => {
         })
 }
 
-post = (req, res) => {
+post = (req, res, next) => {
     const id = req.params.id
     Student
         .findById(id, { include: ['Subjects'] })
         .then(student => {
             Subject
-                .findById(req.body.subject_id)
+                .findById(req.body.subject_id * 1)
                 .then(subject => {
                     student.addSubject(subject)
-                    res.redirect(`/students/${id}/add-subject`)
+                        .then(changes => {
+                            res.redirect(`/students/${id}/add-subject`)
+                        })
                 })
                 .catch(err => {
-                    err.json(err)
+                    res.send(err)
                 })
         })
 }
