@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="main.js"></script>
+</head>
+<body>
+    <br>
+    <div class="container">
+        <div class="container" style="text-align: center">
+            <h1>Add Subject</h1>
+            <button type="button" class="btn btn-primary" onclick="location.href = '/student'">Show All Subject</button>  
+            <br><br>
+            <% if (message) { %>
+                <div class="alert alert-success" role="alert">
+                        <%= message %>
+                </div>
+            <% }else if(err) { %>
+                <% let error = [err] %>
+                <% for(let i=0; i<error.length; i++) { %>
+                <div class="alert alert-danger" role="alert">
+                        <%= error[i] %>
+                </div>
+                <% } %>
+            <% } %>
+        </div>
+        <div class="container">
+            <form action="/subject/add" method="POST">
+                <div class="form-group">
+                    <label for="exampleInputFirstName1">Subject Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Enter Your Subject Name">
+                </div>
+                <button type="submit" class="btn btn-success">Add Subject</button>
+                </form>
+                <br>
+                <div style="text-align: right">
+                        <button type="button" class="btn btn-primary" onclick="location.href = '/subject'">Back</button>  
+                </div>
+        </div>
+    </div>
+</body>
+</html>
