@@ -33,14 +33,15 @@
             <th>Student</th>
             <th>Score</th>
             <th>Give Score</th>
+            <th>Score By Letter</th>
         </tr>
         <% data.Students.forEach(student =>{ %>
         <tr>
             <td><%= student.firstName %></td>
             <td><%= student.SubjectStudent.score %></td>
-             <!-- <td><%= student.id %></td> -->
+            <td><%= helper(student.SubjectStudent.score) %></td>
             <td>
-                <a href="/subject/<%=student.id%>/givescore">give score</a>
+                <a href="/subject/<%= subjectId %>/givescore/<%= student.id %>">give score</a>
             </td>
         </tr>
         <% }) %>  

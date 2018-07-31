@@ -7,6 +7,7 @@ app.set('view engine','ejs')
 app.use(express.json())
 app.use(express.urlencoded({extended : true}))
 app.locals.message = null
+app.locals.helper = require('./helper/scoreByLetter')
 
 app.use('/',routes)
 

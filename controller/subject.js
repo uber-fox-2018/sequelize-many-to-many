@@ -16,8 +16,12 @@ class Controller{
         })
     }
 
-    static findById(id){
-        return Model.Subject.findById(id,{include : Model.Student})
+    static create(obj){
+        return Model.Subject.create(obj)
+    }
+
+    static findById(id,include,condition){
+        return Model.Subject.findById(id,include,condition)
     }
 
 }

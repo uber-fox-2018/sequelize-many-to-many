@@ -32,7 +32,11 @@
 <body>
         <%- include('../partial/header') %>
     <h2>All Student Data</h2>
-    <h3><a href="/teacher/add">Add Data Student</a></h3>
+    <h3><a href="/student/add">Add Data Student</a></h3>
+
+    <% if (message !== null) { %>
+        <h3><%= message %> </h3>
+    <% } %>
     <table id="customers">
         <thead>
             <tr>
@@ -52,7 +56,8 @@
                 <td><%= dataStudent.lastName %></td>
                 <td><%= dataStudent.email %></td>
                 <td><a href="/student/<%= dataStudent.id %>/add-subject">add subject</a>    </td>
-                <td>edit || delete</td>
+                <td><a href="/student/<%= dataStudent.id%>/edit">edit</a> || 
+                    <a href="/student/<%= dataStudent.id %>/delete">Delete</a>  </td>
                 
             </tr>
             <% }) %>
