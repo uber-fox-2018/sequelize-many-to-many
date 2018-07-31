@@ -19,6 +19,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Score</th>
+                    <th>Score Letter</th>
                 </tr>
            </thead>
            <tbody>
@@ -30,6 +31,7 @@
                         <% } else { %>
                             <td> <%= students.StudentSubject.score %></td>
                         <% } %>
+                        <td><%= getScore(students.StudentSubject.score) %></td>
                     </tr>
                <% }) %>
            </tbody>
