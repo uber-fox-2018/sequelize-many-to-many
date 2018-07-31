@@ -13,9 +13,11 @@ routes.get("/edit/:id", controller.edit_get);
 
 routes.post("/edit/:id",controller.edit_post);
 
-routes.post(":id/enrolled-students",controllerEnrollment.);
+routes.get("/:id/enrolled-students",controller.enrollSubject_get);
 
-routes.post(":id/give-score", controller)
+routes.get("/:id/give-score", controller.giveScore_get);
+
+routes.post("/:id/give-score", controller.giveScore_post);
 
 
 module.exports = routes;

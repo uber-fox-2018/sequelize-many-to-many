@@ -73,7 +73,8 @@ class RequestController{
 					action: "Edit",
 					keys:MainMenu(`${section.toLowerCase()}s`,"getKeys"),
 					actionurl:req.params.id,
-					value:Object.values(currentdata.dataValues)
+					value:Object.values(currentdata.dataValues),
+					err:null
 				});
 			})
 			.catch((err)=>{

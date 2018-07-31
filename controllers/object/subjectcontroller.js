@@ -46,6 +46,10 @@ class SubjectController{
 		return Model.Subject
 			.getKeys();
 	}
+
+	static getModel(){
+		return Model.Subject;
+	}
 }
 
 module.exports = SubjectController;

@@ -1,5 +1,11 @@
 const RequestController = require("./requestcontroller.js");
+const Op = require("sequelize").Op;
+const Student = RequestController.getModel("Student");
+const Subject = RequestController.getModel("Subject");
+const Enrollment = RequestController.getModel("Enrollment");
+
 const section = "Student";
+
 
 class StudentRequestController{
 	constructor(){
@@ -31,20 +37,42 @@ class StudentRequestController{
 	}
 
 	static view_enrolled_get(req,res){
-		
+		Student.getEnrollSubjectId(req.params.id)
+			.then((enrollments)=>{
+				let enrolledSubjectId = enrollments.map(x=>x.SubjectId);
+				return Subject.findAll({
+					where:{
+						id:{
+							[Op.notIn]:enrolledSubjectId
+						}
+					}
+				});
+			})
+			.then((subjects)=>{
+				Student.findById(req.params.id)
+					.then(studentData=>{
+						res.render("enroll",{title:"Student Enrollment",studentData,subjects});
+					})
+					.catch((err)=>{
+						res.render("error",{err});
+					});
+			})
+			.catch((err)=>{
+				res.render("error",{err});
+			});
 	}
 
 	static view_enrolled_post(req,res){
-		let Enrollment = RequestController.getModel("Enrollment");
-
-		Enrollment.update(
-			req.body
-			,{
-				returning: true, where: {id:req.params.id}
-			}
-		)
-			.then()
-			.catch();
+		Enrollment.create({
+			SubjectId:req.body.SubjectId,
+			StudentId:req.params.id
+		})
+			.then((response)=>{
+				res.redirect("/students");
+			})
+			.catch((err)=>{
+				res.render("error",{err});
+			});
 	}
 }
 

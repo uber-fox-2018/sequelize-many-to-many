@@ -14,9 +14,12 @@
 		<table class="table table-hover">
 			<tr>
 				<% for (let key in listdata[0]){ %> 
-					<% if (key !== "createdAt" && key!== "updatedAt" && key !== "SubjectId" ){ %>
+					<% if (key !== "createdAt" && key!== "updatedAt" && key !== "SubjectId" && key !=="Subjects" ){ %>
 						<th> <%=key.split("_").map(s=>s.replace(/^[a-z]/i,(match,string)=>match.toUpperCase())).join(" ") %> </th>
 					<% } %>
+				<% } %>
+				<% if(listdata[0].Subjects || listdata[0].Teachers){ %>
+					<th>Actions</th>
 				<% } %>
 				<th>Options</th>
 			</tr>
@@ -24,7 +27,7 @@
 			<% for(let data of listdata){%>
 			<tr>
 				<% for (let datasection in data){ %>
-					<% if (datasection !== "createdAt" && datasection!== "updatedAt" && datasection !== "SubjectId") { %>
+					<% if (datasection !== "createdAt" && datasection!== "updatedAt" && datasection !== "SubjectId" && datasection !== "Subjects") { %>
 						<%if(datasection !== "Subject" && datasection !== "Teachers") { %>
 						<td> <%=data[datasection]%> </td>
 						<% }else if(datasection !== "Teachers"){ %>
@@ -38,6 +41,8 @@
 						<%} else {%>
 						<td> No Teachers </td>
 						<% } %>
+					<% }else if(datasection === "Subjects"){%>
+						<td> <a href=/students/<%=data.id%>/add-subject>Add Subject</a></td>
 					<% } %>
 				<% } %>
 				<td>
