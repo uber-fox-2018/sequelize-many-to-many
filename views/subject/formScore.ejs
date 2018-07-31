@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+
+</head>
+
+<body>
+    <form action="/subject/<%= data.SubjectId %>/givescore/<%=data.StudentId %>" method="POST">
+        Score:
+        <br>
+        <input type="text" name="score" value="">
+        <br>
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>
