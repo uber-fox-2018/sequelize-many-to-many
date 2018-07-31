@@ -101,7 +101,7 @@ router.post('/:id/add-subject', function(req, res) {
 })
 
 router.get('/:id/enrolled-students', function(req, res) {
-    console.log('masuk');
+    // console.log('masuk');
     ControllerStudents.enrolledStudents()
     .then(dataSubjectStudents => {
         // res.json(dataSubjectStudents)
@@ -111,6 +111,10 @@ router.get('/:id/enrolled-students', function(req, res) {
     .catch(err => {
         res.json(err)
     })
+})
+
+router.get('/:id/give-score', function(req, res) {
+    res.render() // SAMPAI SINI GIVE SCORE
 })
 
 module.exports = router

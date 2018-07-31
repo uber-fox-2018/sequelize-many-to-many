@@ -14,4 +14,19 @@ routes.get('/', function(req, res) {
     })
 })
 
+routes.get('/:id/give-score', function(req, res) {
+    // console.log('masuk');
+    let id = req.params.id
+    // console.log(req.body);
+    ControllerSubjects.showScore(id)
+    .then(dataSubjectStudents => {
+        // res.json(dataSubjectStudents)
+        res.render('giveScore', {dataSubjectStudents, id})
+    })
+    .catch(err => {
+        res.json(err)
+    })
+})
+
+
 module.exports = routes
