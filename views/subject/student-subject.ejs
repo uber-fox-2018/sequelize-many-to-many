@@ -25,6 +25,7 @@
                   <th scope="col">ID</th>
                   <th scope="col">Name Student</th>
                   <th scope="col">Score</th>
+                  <th scope="col">Grade</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>
@@ -39,6 +40,13 @@
                     </td>
                     <td>
                       <%= data.StudentSubject.score %>
+                    </td>
+                    <td>
+                      <% if (data.StudentSubject.score === 0) { %>
+                        Empty
+                      <% } else { %>
+                        <%= convertScore(data.StudentSubject.score) %>
+                      <% } %>
                     </td>
                     <td>
                       <a href="/subjects/<%= data.id %>/<%= subjectId %>/give-score" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Give Score</a>

@@ -3,6 +3,8 @@ const app = express()
 
 const routesIndex = require('./routes/index')
 
+app.locals.convertScore = require('./helpers/convertScore')
+
 app.set('view engine', 'ejs')
 
 app.use(express.json())
