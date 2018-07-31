@@ -2,6 +2,7 @@ const models = require('../models');
 const Subject = models.Subject;
 const Student = models.Student;
 const StudentSubject = models.StudentSubject;
+const scoreHelper = require('../helpers/scoregradehelper');
 
 module.exports = {
 
@@ -95,8 +96,14 @@ module.exports = {
             include: [models.StudentSubject]
         })
             .then(students => {
-                console.log(students)
-                res.render('./subjects/givescore', { title: `Give Score`, SubjectId: req.params.idSubject, StudentId: req.params.idStudent, students: students, error: null });
+                console.log('=====', students.scoreHelper)
+                res.render('./subjects/givescore', { 
+                    title: `Give Score`, 
+                    SubjectId: req.params.idSubject, 
+                    StudentId: req.params.idStudent, 
+                    students: students,
+                    scoreHelper: scoreHelper,
+                    error: null })
             })
             .catch(err => {
                 res.render('./subjects/givescore', { title: `Give Score`, error: err.message });

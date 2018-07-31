@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use(routes);
-
+app.locals.scoreHelper = require('./helpers/scoregradehelper');
 
 app.listen(3000, () => {
     console.log(`listening on port 3000...`);

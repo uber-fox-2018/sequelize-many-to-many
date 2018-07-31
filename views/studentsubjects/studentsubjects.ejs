@@ -30,7 +30,8 @@
             <tr>
                 <th>Student ID</th>
                 <th>Student Name</th>
-                <th>Give Score</th>
+                <th>Score By Number</th>
+                <th>Score By Letter</th>
 
             </tr>
             <% studentsubjectData[0].Students.forEach(studentsubject => { %>
@@ -51,12 +52,15 @@
                         <td>
                                 <a href="/subjects/<%= studentsubjectData[0].id %>/give-score/<%=studentsubject.id%>">Score
                                 </a>
-                        
                     </td>
                     <% } %>
-                     
+                    <td>
+                        <%= scoreHelper(studentsubject.StudentSubject.Score) %>
+                        </td>
+                   
                 </tr>
                 <% }) %>
+
     </div>
     </table>
 
