@@ -8,6 +8,8 @@ const app = express();
 const path = require("path");
 var port = process.env.PORT || 3000;
 
+app.locals.numToGrade = require('./helper/numToGrade')
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 const home = require('./routes/home');

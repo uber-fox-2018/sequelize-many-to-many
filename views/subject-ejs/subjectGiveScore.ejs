@@ -81,7 +81,7 @@
                                                         </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                                     </div>
                                                 </div>
 
@@ -99,7 +99,8 @@
                             </td>
                             <td>
                                 <ol>
-                                    ---
+
+                                    <%= (data.Students[i].SubjectStudent.score)? numToGrade(data.Students[i].SubjectStudent.score):'------' %> 
                                 </ol>
                             </td>
                         </tr>
