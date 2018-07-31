@@ -5,8 +5,6 @@ const models = require("../models");
 
 subjectRoutes.get("/subjects", (req, res) => {
   models.Subject.findAll({ include: [models.Teacher] }).then(subjects => {
-    console.log(subjects);
-
     res.render("subject-ejs/subjectList", { subjects });
   });
 });
@@ -55,16 +53,42 @@ subjectRoutes.post("/subjects/edit/:id", function(req, res) {
 subjectRoutes.get("/subjects/:id/enrolled-students", function(req, res) {
   let id = req.params.id;
   models.Subject.findById(id, {
-    include: [models.Student]
+    include: [
+      {
+        model: models.Student
+      }
+    ]
   })
-    .then(function(subjects) {
-      console.log(`>>>>`, subjects[0]);
-
-      res.render("subject-ejs/subjectGiveScore", { subjects: subjects });
+    .then(data => {
+      // res.json(data);
+      res.render("subject-ejs/subjectGiveScore", {
+        data: data
+      });
     })
     .catch(err => {
       res.send(err.message);
     });
 });
 
+subjectRoutes.post(
+  "/subjects/:idSubject/enrolled-students/:idStudent",
+  function(req, res) {
+    let subjectId = req.params.idSubject;
+    let studentid = req.params.idStudent;
+    console.log(`>>>`, subjectId);
+
+    models.SubjectStudent.update(
+      {
+        score: req.body.score
+      },
+      { where: { StudentId: studentid } }
+    )
+      .then(data => {
+        res.redirect(`/subjects/${subjectId}/enrolled-students`);
+      })
+      .catch(err => {
+        res.send(err);
+      });
+  }
+);
 module.exports = subjectRoutes;

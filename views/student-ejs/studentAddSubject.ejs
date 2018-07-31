@@ -13,15 +13,7 @@
 <body>
     <form action="/students/<%= student.id%>/add-subject " class="form" method="POST">
         <h2>add Subject to Student</h2>
-        <p type="First Name:">
-            <input placeholder="Write your first name here.." type="text" name="firstName"></input>
-        </p>
-        <p type="Last Name:"></p>
-        <input placeholder="Also your last name here.." type="text" name="lastName"></input>
-        </p>
-        <p type="Email:">
-            <input placeholder="Let us know how to contact you back.." type="text" name="email"></input>
-        </p>
+
         <label for="your-name">subject</label> is
         <select name="SubjectId">
             <% for(let i = 0; i<subject.length;i++){  %>

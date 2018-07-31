@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add a Teacher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/student-css/inputStudent.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <form action="/students/add"  class="form" method="POST">
+        <h2>Register Student</h2>
+        <p type="First Name:">
+            <input placeholder="Write your first name here.." type="text" name="firstName"></input>
+        </p>
+        <p type="Last Name:"></p>
+            <input placeholder="Also your last name here.." type="text" name="lastName"></input>
+        </p>
+        <p type="Email:">
+            <input placeholder="Let us know how to contact you back.." type="text" name="email"></input>
+        </p>
+        <a href="/">Home</a>
+        <button>
+            <input type="submit"  value='Add'>
+        </button>
+
+
+    </form>
+
+</body>
+
+</html>

@@ -24,7 +24,7 @@ studentsRoutes.post("/students/add", (req, res) => {
       res.redirect("/students");
     })
     .catch(err => {
-      res.redirect("/students", { show: err });
+      res.send(err)
     });
 });
 

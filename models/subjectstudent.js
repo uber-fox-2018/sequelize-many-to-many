@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     "SubjectStudent",
     {
       SubjectId: DataTypes.INTEGER,
-      StudentId: DataTypes.INTEGER
+      StudentId: DataTypes.INTEGER,
+      score: DataTypes.INTEGER
     },
     {}
   );
