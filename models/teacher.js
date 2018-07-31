@@ -14,9 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     subjectId: DataTypes.INTEGER
   }, {});
   Teacher.associate = function(models) {
-    Teacher.belongsTo(models.Subject, {
-      foreignKey: "subjectId"
-    })
+    Teacher.belongsTo(models.Subject, {foreignKey: "subjectId"})
   };
   return Teacher;
 };

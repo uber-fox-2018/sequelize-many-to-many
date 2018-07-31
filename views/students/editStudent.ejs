@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Students</title>
+</head>
+<body>
+    <h1>Edit Students</h1>
+    <p><a href ="/studentsData">student data</a></p>
+    <div class="edit_student_table">
+        <form action="/edit/<%= editStudent.id%>" method="post">
+            First name:<br>
+            <input type="text" name="firstName" value="<%= editStudent.firstName%>">
+            <br>
+            Last name:<br>
+            <input type="text" name="lastName" value="<%= editStudent.lastName%>">
+            <br>
+            Email:<br>
+            <input type="text" name="email" value="<%= editStudent.email%>">
+            <br><br>
+            <input type="submit" value="Edit Student">
+        </form>
+    </div>
+<p><a href ="/">home</a></p>
+</body>
+</html>
