@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Student.associate = function(models) {
     const Subject = models.Subject;
-    Student.belongsToMany(Subject,{through:"StudentSubjects", foreignKey: "studentId"})
+    const StudentSubject = models.StudentSubject;
+    Student.hasMany(StudentSubject, {foreignKey : "studentId"})
+    Student.belongsToMany(Subject,{through: StudentSubject, foreignKey: "studentId"})
   };
   return Student;
 };

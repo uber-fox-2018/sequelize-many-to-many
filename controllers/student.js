@@ -4,11 +4,14 @@ const Subject = models.Subject;
 const StudentSubject = models.StudentSubject;
 module.exports = {
     getAllStudents : (req, res) =>{
+        // console.log("=====4=====")
         Student.findAll({order: [['id', 'ASC']]})
                 .then(studentsData=>{
+                    // console.log("=====5=====")
                     res.render("students", {students : studentsData})
                 })
                 .catch(err => {
+                    // console.log("=====6=====")
                     res.render("error");
                  })
     },
@@ -18,6 +21,7 @@ module.exports = {
     },
 
     addStudent : (req, res) =>{
+        // console.log("=====1=====")
         let newStudent = req.body; //e.g. { first_name: 'susan',last_name: 'nio', email: 'susan@gmail.com' }
         Student.create({
             first_name : newStudent.first_name[0].toUpperCase() + newStudent.first_name.slice(1),
@@ -25,9 +29,11 @@ module.exports = {
             email : newStudent.email
         })
                 .then(newStudent =>{
+                    // console.log("=====2=====")
                     res.redirect("/students")
                 })
                 .catch(err =>{
+                    // console.log("=====3=====")
                     res.send(err.message);
                 })
     },

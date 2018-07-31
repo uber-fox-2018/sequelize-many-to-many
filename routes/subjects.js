@@ -8,7 +8,7 @@ routes.get('/subjects/edit/:id', getSubject);
 routes.post('/subjects/edit/:id', updateSubject);
 routes.get('/subjects/delete/:id', deleteSubject);
 
-routesSubject.get('/subjects/:id/enrolled-students', subjectsEnrollment);
+routes.get('/subjects/:id/enrolled-students', subjectsEnrollment);
 routes.get('/subjects/:idSubject/give-score/:idStudent', studentForScoring);
 routes.post('/subjects/:idSubject/give-score/:idStudent', scoring);
 module.exports = routes;
