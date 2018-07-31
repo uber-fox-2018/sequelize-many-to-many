@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>edit-teachers</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/teacher/update" method="POST">
+            <label for="">FIRST NAME 
+                <input type="text" name="data_id" id="" value="<%= teacher[0].id %>" style="display: none">
+                <input type="text" name="first_name" id="" value="<%= teacher[0].first_name %>">
+            </label><br>
+            <label for="">LAST NAME
+                <input type="text" name="last_name" id="" value="<%= teacher[0].last_name %>">
+            </label><br>
+            <label for="">EMAIL
+                <input type="email" name="email" id="" value="<%= teacher[0].email %>">
+            </label><br>
+            <label for="">SUBJECT
+                <input type="text" name="subject" id="" value="<%= (teacher[0].Subject != null) ? teacher[0].Subject.id : 'isi data'%>">
+            </label><br>
+            <input type="submit" value="UPDATE DATA">
+        </form>
+    </div>
+</body>
+
+</html>

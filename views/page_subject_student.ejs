@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>edit-subject-student</title>
+</head>
+
+<body>
+    <div class="container">
+        <form action="/subject/add-subject" method="POST">
+            <input type="text" name="student_id" id="" value="<%= student.id %>" style="display: none">
+            <label>First Name</label> <%= student.first_name %> <br>
+            <label>Last Name</label> <%= student.last_name %> <br>
+            <label>Email</label> <%= student.email %> <br>
+            <label for="">SUBJECT
+                <select name="subject_name">
+                    <% subject.forEach( dataSubject => { %>
+                        <option value="<%= dataSubject.id %>"><%= dataSubject.name %></option>
+                    <% }) %>
+                </select>
+            </label><br>
+            <input type="submit" value="ADD SUBJECT">
+        </form>
+    </div>
+</body>
+
+</html>
