@@ -1,5 +1,4 @@
-var scoreByLetter = function(nilai){
-    console.log(nilai);
+module.exports = function(nilai){
     if(nilai === null){
         return 'empty'
     }else if(nilai > 85){
@@ -12,5 +11,3 @@ var scoreByLetter = function(nilai){
         return 'E'
     }
 }
-
-module.exports = scoreByLetter
