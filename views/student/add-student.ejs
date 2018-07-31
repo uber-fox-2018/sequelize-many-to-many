@@ -13,6 +13,14 @@
         <a href="/students">Show Students Data</a>
     </div>
 
+    <% if(err !== null){%>
+        <div class="container">
+            <div class="alert alert-danger" role="alert">
+                <%= err.message %>
+            </div>
+        </div>
+    <%}%>
+
     <div class="container">
         <form action="" method="POST">
             <label for="">First Name</label>
@@ -22,7 +30,7 @@
             <input type="text" name="lastName" class="form-control">
 
             <label for="">Email</label>
-            <input type="email" name= "email" class="form-control">
+            <input type="text" name= "email" class="form-control">
 
             <br>
             <button class="btn btn-warning">Submit</button>

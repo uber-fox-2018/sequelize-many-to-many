@@ -13,7 +13,13 @@ router.get('/',(req,res) => {
 })
 
 router.get('/add', (req,res) => {
-    res.render('../views/student/add-student',)
+    Student.findAll()
+    .then((data_student) => {
+        res.render('../views/student/add-student', {err: null, data_student: data_student})
+    })
+    .catch((err) => {
+        res.render('../views/student/add-student', {err: err, data_student: null})
+    })
 })
 
 router.post('/add', (req,res) => {
@@ -24,6 +30,9 @@ router.post('/add', (req,res) => {
     })
     .then(() => {
         res.redirect('/students')
+    })
+    .catch((err) => {
+        res.render('../views/student/add-student', {err: err, data_student: null})
     })
 })
 
@@ -53,7 +62,7 @@ router.post('/:id/add-subject', (req,res) => {
 router.get('/:id/edit',(req,res) => {
     Student.findById(req.params.id)
     .then((data_student) => {
-        res.render('../views/student/edit-student', {data_student: data_student})
+        res.render('../views/student/edit-student', {data_student: data_student,err: null})
     })
 })
 
@@ -65,6 +74,9 @@ router.post('/:id/edit', (req,res) => {
     },{where: {id: req.params.id}})
     .then(() => {
         res.redirect('/students')
+    })
+    .catch((err) => {
+        res.render('../views/student/edit-student', {data_student: [],err: err})
     })
 })
 

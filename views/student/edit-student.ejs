@@ -11,6 +11,14 @@
     <div class="container text-center">
         <h1>Edit Student</h1>
         <a href="/students">Students Data</a>
+        
+        <% if(err !== null){%>
+            <div class="container">
+                <div class="alert alert-danger" role="alert">
+                    <%= err.message %>
+                </div>
+            </div>
+        <%}%>
     </div>
     
     <div class="container">
