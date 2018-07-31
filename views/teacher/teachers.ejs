@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <h1> Teachers Data </h1>
 <p> <a href="/teachers/add">add teacher</a> </p>
@@ -18,7 +18,7 @@
             <td><%= teacher.firstName %></td>
             <td><%= teacher.lastName %></td>
             <td><%= teacher.email %></td>
-            <%if(teacher.subjectId !== null){  %>
+            <%if(teacher.subjectId !== null && teacher.Subject!==null){  %>
                 <td><%= teacher.Subject.subjectName%></td>
             <% }else{ %>
                 <td>unassigned</td>
@@ -32,4 +32,4 @@
     </table>
 </div>
 
-<% include partials/footer %>
+<% include ../partials/footer %>

@@ -4,24 +4,20 @@ const Subject = models.Subject;
 const StudentSubject = models.StudentSubject;
 module.exports = {
     getAllStudents : (req, res) =>{
-        // console.log("=====4=====")
         Student.findAll({order: [['id', 'ASC']]})
                 .then(studentsData=>{
-                    // console.log("=====5=====")
-                    res.render("students", {students : studentsData})
+                    res.render("student/students", {students : studentsData})
                 })
                 .catch(err => {
-                    // console.log("=====6=====")
                     res.render("error");
                  })
     },
 
     addForm : (req, res) =>{
-        res.render("add_Form")
+        res.render("student/add_Form")
     },
 
     addStudent : (req, res) =>{
-        // console.log("=====1=====")
         let newStudent = req.body; //e.g. { first_name: 'susan',last_name: 'nio', email: 'susan@gmail.com' }
         Student.create({
             first_name : newStudent.first_name[0].toUpperCase() + newStudent.first_name.slice(1),
@@ -29,11 +25,9 @@ module.exports = {
             email : newStudent.email
         })
                 .then(newStudent =>{
-                    // console.log("=====2=====")
                     res.redirect("/students")
                 })
                 .catch(err =>{
-                    // console.log("=====3=====")
                     res.send(err.message);
                 })
     },
@@ -42,7 +36,7 @@ module.exports = {
         let id = req.params.id;
             Student.findById(id)
                 .then(student=>{
-                    res.render("edit_student", {student : student})
+                    res.render("student/edit_student", {student : student})
                 })
                 .catch(err =>{
                     res.render("error");
@@ -86,10 +80,10 @@ module.exports = {
             .then(student=>{
                 Subject.findAll()
                     .then(subjects=>{
-                        res.render("addSubject", {student:student, subjects:subjects, error:null})
+                        res.render("student/addSubject", {student:student, subjects:subjects, error:null})
                     })
                     .catch(err=>{
-                        res.render("addSubject", {error : err.message})
+                        res.render("student/addSubject", {error : err.message})
                     })
             })
 
@@ -104,7 +98,7 @@ module.exports = {
             res.redirect("/students")
         })
         .catch(err=>{
-            res.render("addSubject", {error:err.message})
+            res.render("student/addSubject", {error:err.message})
         })
     }
 

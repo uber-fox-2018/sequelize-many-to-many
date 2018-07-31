@@ -7,7 +7,9 @@ module.exports = {
             include: [models.Subject]
         })
         .then(teacherWithSubject=>{
-            res.render("teachers", {teachers: teacherWithSubject})
+            console.log("======1======")
+            console.log(teacherWithSubject)
+            res.render("teacher/teachers", {teachers: teacherWithSubject})
         })
         .catch(err =>{
             res.render("error");
@@ -15,7 +17,7 @@ module.exports = {
     },
 
     addForm : (req, res) =>{
-        res.render("add_teacher_form", {teacher:undefined})
+        res.render("teacher/add_teacher_form", {teacher:undefined, err:false})
     },
 
     addTeacher : (req, res) =>{
@@ -29,8 +31,8 @@ module.exports = {
                 .then(newTeacher =>{
                     res.redirect("/teachers")
                 })
-                .catch(err =>{
-                    res.render("add_teacher_form", {teacher: newTeacher, err:err});
+                .catch(err =>{           
+                    res.render("teacher/add_teacher_form", {teacher: newTeacher, err:err.message});
                 })
     },
 
@@ -38,7 +40,7 @@ module.exports = {
         let id = req.params.id;
             Teacher.findById(id)
                 .then(teacher=>{
-                    res.render("edit_teacher", {teacher : teacher})
+                    res.render("teacher/edit_teacher", {teacher : teacher})
                 })
                 .catch(err =>{
                     res.render("error");

@@ -1,10 +1,13 @@
-<% include ./partials/header %>
+<% include ../partials/header %>
 
-<% if (error !== null) { %>
-    <%= error %>
-<% } %>
-
-<h1>Add Subject To Student</h1>
+<% if (student == null) { %>
+    <div class="ui negative message">
+        <div class="header">
+              Student is not found!
+        </div>
+    </div>
+<%}else{ %>
+    <h1>Add Subject To Student</h1>
 <form class="ui form" action="/students/<%=student.id%>/add-subject" method="POST">
     <div class="field">
       <label>First Name</label>
@@ -31,4 +34,8 @@
     <button class="ui button" type="submit">Add Subject</button>
   </form>
 
-<% include ./partials/footer %>
+
+<% } %>
+
+
+<% include ../partials/footer %>

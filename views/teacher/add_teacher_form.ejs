@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 <h1> Add Teacher Data </h1>
 <p> <a href="/teachers">show all data</a> </p>
@@ -9,7 +9,7 @@
               <%= err%>
             </div>
           </div>
-<%}%>
+<%}else{%>
 
 <div>
     <form action="/teachers/add" method="POST">
@@ -37,5 +37,6 @@
         <input type="submit" value="Add Teacher">
     </form>
 </div>
+<%}%>
 
-<% include partials/footer %>
+<% include ../partials/footer %>
