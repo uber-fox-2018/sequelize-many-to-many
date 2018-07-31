@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Students Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <a href="/">
+        <button><h2>HOME</h2></button>
+    </a>
+    <center>
+        <h1>Students Data</h1>
+        <a href="/studens/add-students">
+            <p>add Students</p>
+        </a>
+        <table border="1px">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                    <th>Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(let i = 0 ; i < data.length ; i++){ %>
+                    <tr>
+                        <td>
+                            <%= data[i].id %>
+                        </td>
+                        <td>
+                            <%= data[i].firstName %>
+                                <%= data[i].lastName %>
+                        </td>
+                        <td>
+                            <%= data[i].email %>
+                        </td>
+                        <td>
+                            <a href="/students/<%= data[i].id %>/add-subject">
+                                Add Subject
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/students/<%= data[i].id%>">
+                            delete</a>
+                        </td>
+                    </tr>
+                    <% }%>
+            </tbody>
+        </table>
+    </center>
+</body>
+
+</html>
