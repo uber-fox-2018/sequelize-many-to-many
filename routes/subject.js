@@ -12,4 +12,14 @@ router.get('/', function(req,res){
     })
 })
 
+router.get('/enrolledStudents/;id', function(req,res){
+    Subject.findById(req.params.id, {
+        order : [['id','ASC']],
+        include:[models.Student]
+    })
+    .then((dataSubject)=> {
+        res.render('enrolledStudents.ejs', {dataSubject:dataSubject })
+    })
+})
+
 module.exports = router

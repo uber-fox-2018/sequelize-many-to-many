@@ -69,20 +69,25 @@ router.get('/delete/:id', function(req,res){
 
 router.get('/addSubject/:id', function(req,res){
     let student = null
+    // console.log(req.params);
+    
     Student.findById(req.params.id)
     .then((studentData) => {
         student = studentData
-        return models.Subject.findAll()
+        // console.log(studentData);
+        
+        models.Subject.findAll()
+        .then((subjectData)=> {
+            res.render('addStudentSubject.ejs', {studentData:student,subjectData:subjectData,err:null})
+            
+        })
     })
 
-    .then((subjectData)=> {
-        res.render('addSubjectStudent.ejs', {studentData:studentData,subjectData:subjectData,err:null})
-        
-    })
+    
 
 })
 
-router.post('/addSubject/;id',function(req,res){
+router.post('/addSubject/:id',function(req,res){
     StudentSubject.create({
         StudentId: req.params.id,
         SubjectId: req.body.SubjectId
@@ -90,6 +95,9 @@ router.post('/addSubject/;id',function(req,res){
 
     .then(function(){
         res.redirect('/student')
+    })
+    .catch(err => {
+        res.send(err)
     })
 } )
 
