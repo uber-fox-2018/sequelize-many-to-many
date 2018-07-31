@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>
+        <center>
+            <%= dataSubject.subjectName %>
+        </center>
+    </h1>
+    <h3>
+        <center>
+            <a href="/subjects">
+                return to subject list
+            </a>
+        </center>
+    </h3>
+    <%- include('../partials/styleTable') %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%dataSubject.Students.forEach(function(student){%>
+                    <tr>
+                        <td>
+                            <%= student.getFullName() %>
+                        </td>
+                        <td>
+                            <a href="<%= dataSubject.id %>/give-score">give score</a>
+                        </td>
+                    </tr>
+                    <%})%>
+            </tbody>
+        </table>
+
+</body>
+
+</html>

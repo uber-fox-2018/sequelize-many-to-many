@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1> Add Teacher Form</h1>
+    <form action="/teachers/add" method="POST">
+        First name:
+        <br>
+        <input type="text" name="fname" placeholder="First name">
+        <br> Last name:
+        <br>
+        <input type="text" name="lname" placeholder="Last Name">
+        <br> Email:
+        <br>
+        <input type="text" name="email" placeholder="Email">
+        <br> Subject:
+        <select name="subjectId">
+            <% dataSubject.forEach(function(subject){%>
+                <option value="<%= subject.id %>">
+                    <%= subject.subjectName%>
+                </option>
+                <%})%>
+        </select>
+        <br>
+        <br>
+        <input type="submit" value="Add Teacher">
+    </form>
+
+</body>
+
+</html>
