@@ -25,6 +25,8 @@ router.get('/:id/enrolled-student', (req,res) => {
     })
 })
 
-router.get('')
+router.get('/:id/give-score', (req,res) => {
+    
+})
 
 module.exports = router
