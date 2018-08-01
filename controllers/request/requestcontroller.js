@@ -36,7 +36,6 @@ class RequestController{
 	}
 
 	static add_post(section,req,res){
-		console.log("request---------------",Object.values(req.body));
 		MainMenu(`${section.toLowerCase()}s`,"add",Object.values(req.body))
 			.then((response)=>{
 				res.redirect(`/${section.toLowerCase()}s`);
