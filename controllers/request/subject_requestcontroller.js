@@ -1,6 +1,7 @@
 const RequestController = require("./requestcontroller.js");
 const section = "Subject";
 const Student = RequestController.getModel("Student");
+const Enrollment = RequestController.getModel("Enrollment");
 
 class SubjectRequestController{
 	constructor(){
@@ -63,23 +64,28 @@ class SubjectRequestController{
 	}
 
 	static giveScore_get(req,res){
-		let Subject = this.getModel();
-		Subject.findOne({
-			include:[Student],
-			where:{
-				id:req.params.id
-			}
-		})
-			.then((student)=>{
-				res.send(student);
+		res.render("givescore",{title:"Give Score"});
+	}
+
+	static giveScore_post(req,res){
+		Enrollment
+			.update(
+				{
+					score:req.body.score
+				},
+				{
+					returning: true, where: {
+						SubjectId:req.params.id,
+						StudentId:req.params.studentId
+					}
+				}
+			)
+			.then(()=>{
+				res.redirect(`/subjects/${req.params.id}/enrolled-students`);
 			})
 			.catch((err)=>{
 				res.render("error", {err});
 			});
-	}
-
-	static giveScore_post(req,res){
-
 	}
 	
 }

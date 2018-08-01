@@ -13,7 +13,7 @@
 			<tr>
 				<td><%=student.name%></td>
 				<% if(!student.score){ %>
-					<td>Give Score</td>
+					<td><a href="/subjects/12/enrolled-students/<%=student.id%>/give-score">Give Score</a></td>
 				<% } else{ %>
 					<td><%=student.score%></td>
 				<% } %>

@@ -45,6 +45,10 @@
 						<td> <a href=/students/<%=data.id%>/add-subject>Add Subject</a></td>
 					<% } %>
 				<% } %>
+
+				<% if(listdata[0].Teachers){ %>
+						<td> <a href=/subjects/<%=data.id%>/enrolled-students>Enrolled Students</a></td>
+				<% } %> 
 				<td>
 					<a href="/<%=`${obj.toLowerCase()}s`%>/edit/<%=data.id%>">
 						<button type="button" class="btn btn-default good">Edit</button>

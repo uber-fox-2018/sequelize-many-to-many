@@ -67,7 +67,6 @@ class RequestController{
 		console.log("current", req.params.id)
 		MainMenu(`${section.toLowerCase()}s`,"read_one",[req.params.id])
 			.then((currentdata)=>{
-				console.log("current", currentdata)
 				res.render("form",{
 					section,
 					action: "Edit",
