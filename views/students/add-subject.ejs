@@ -20,7 +20,7 @@
   <h5>Choose Subject</h5>
   <br>
   <form action="/students/<%= student.id %>/add-subject" method="POST">
-  <select name = "subjectId">
+  <select name = "SubjectId">
   <% subjects.forEach( subject => { %>
     <option value="<%= (subject.id) %>"><%= subject.subject_name %></option>
   <% }) %>
