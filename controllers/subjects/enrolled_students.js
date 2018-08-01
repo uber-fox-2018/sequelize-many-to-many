@@ -1,12 +1,12 @@
 const model = require('../../models')
 const giveScore = require('../../helpers/score_helper')
-
+const scoreLetter = require('../../helpers/score_letter_helper')
 const Subject = model.Subject
 
 module.exports = (req, res) => {
     Subject
         .findById(req.params.id, { include: ['Students'] })
         .then(subject => {
-            res.render('subjects/enrolled_students', { subject, giveScore })
+            res.render('subjects/enrolled_students', { subject, giveScore, scoreLetter })
         })
 }

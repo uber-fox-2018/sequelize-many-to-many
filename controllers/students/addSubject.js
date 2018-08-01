@@ -19,7 +19,7 @@ get = (req, res) => {
         })
 }
 
-post = (req, res, next) => {
+post = (req, res) => {
     const id = req.params.id
     Student
         .findById(id, { include: ['Subjects'] })

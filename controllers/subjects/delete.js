@@ -22,7 +22,7 @@ const post = (req, res) => {
             res.redirect('/subjects')
         })
         .catch(err => {
-            res.status(500).json(err)
+            console.log(err)
         })
 }
 

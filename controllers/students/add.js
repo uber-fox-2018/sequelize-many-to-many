@@ -1,13 +1,16 @@
 'use strict'
 
 const model = require('../../models')
+const errorHandler = require('../errorHandler')
+const validationError = require('../validationError')
+
 const Student = model.Student
 
 const get = (req, res) => {
     res.render("students/add", { validationErrors: [] })
 }
 
-const post = (req, res) => {
+const post = (req, res, next) => {
 
     Student
         .create({
@@ -19,10 +22,8 @@ const post = (req, res) => {
             res.redirect('/students')
         })
         .catch(err => {
-            if (err.name == "SequelizeValidationError" || "SequelizeUniqueConstraintError")
-                res.render('students/add', { validationErrors: err.errors })
-            else
-                res.status(500).json(err)
+            validationError(err)
+            res.render('students/add', { validationErrors: err.errors })
         })
 }
 

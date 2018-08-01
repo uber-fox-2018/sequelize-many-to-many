@@ -11,7 +11,6 @@ module.exports = (req, res) => {
             res.render('subjects/', { subjects })
         })
         .catch(err => {
-            res.status(500).json(err)
-            console.log(err)
+            res.send(err)
         })
 }

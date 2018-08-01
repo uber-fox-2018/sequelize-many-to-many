@@ -8,8 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   Enrollment.associate = function (models) {
     const Subject = models.Subject
     const Student = models.Student
-    Enrollment.hasMany(Subject, { foreignKey: 'id' })
-    Enrollment.hasMany(Student, { foreignKey: 'id' })
+    Enrollment.belongsTo(Subject, { foreignKey: 'subject_id' })
+    Enrollment.belongsTo(Student, { foreignKey: 'student_id' })
   };
   return Enrollment;
 };
