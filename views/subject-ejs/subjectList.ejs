@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/student-css/addStudent.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <section>
+        <!--for demo wrap-->
+        <h1>Subjects Data</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>subject name</th>
+                        <th>Teacher</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <% subjects.forEach(subject=> {%>
+                        <tr>
+                            <td>
+                                <%=subject.id %>
+                            </td>
+                            <td>
+                                <%=subject.subjectName %>
+                            </td>
+                            <td>
+                                <ol>
+                                    <% subject.Teachers.forEach(teacher=> {%>
+
+                                        <li>
+                                            <%=teacher.firstName%>
+                                                <%= teacher.lastName %>
+                                        </li>
+                                        <% }) %>
+
+                                </ol>
+
+                            </td>
+                            <td>
+                                <a href="/subjects/<%= subject.id %>/enrolled-students" onclick="return confirm('Give it a score?');">Enrolled Students</a>
+                            </td>
+                            <%})%>
+
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+        <a href="/">Home</a>
+    </section>
+</body>
+
+</html>

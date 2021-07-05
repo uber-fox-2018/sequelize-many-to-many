@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Students List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/student-css/addStudent.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <section>
+        <!--for demo wrap-->
+        <h1>Students Data</h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>First Name</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                        <th>Options</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    <% Students.forEach(student=> {%>
+
+                        <tr>
+
+                            <td>
+                                <%=student.id %>
+                            </td>
+                            <td>
+                                <%=student.firstName %>
+                            </td>
+                            <td>
+                                <%=student.lastName %>
+                            </td>
+                            <td>
+                                <%=student.email %>
+                            </td>
+                            <td>
+                                <a href="/students/<%= student.id%>/add-subject ">Add Subject</a>
+                            </td>
+                            <td>
+                                <a href="/students/delete/<%= student.id %>" onclick="return confirm('are you sure?');">Delete</a>|
+                                <a href="/students/edit/<%= student.id %>" onclick="return confirm('edit this row?');">Edit</a>
+                            </td>
+                        </tr>
+                        <%})%>
+
+                </tbody>
+            </table>
+
+        </div>
+        <a href="/">Home</a>
+
+    </section>
+
+
+
+</body>
+
+</html>

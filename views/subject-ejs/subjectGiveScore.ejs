@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Students List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/student-css/addStudent.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+</head>
+
+<body>
+    <section>
+        <h1>
+            <%=data.subjectName %>
+        </h1>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>Num</th>
+                        <th>Name</th>
+                        <th>score</th>
+                        <th>score Letter</th>
+
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <% for(let i = 0 ;i<data.Students.length;i++){%>
+
+                    <tbody>
+                        <tr>
+                            <td>
+                                <ol>
+                                    <%= i+1 %>
+                                </ol>
+                            </td>
+                            <td>
+                                <ol>
+                                    <%=data.Students[i].firstName %>
+                                        <%=data.Students[i].lastName %>
+                                </ol>
+                            </td>
+                            <td>
+                                <% if(!data.Students[i].SubjectStudent.score){ %>
+                                    <div class="container">
+                                        <!-- Trigger the modal with a button -->
+                                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="myModal" role="dialog">
+                                            <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        <h4 class="modal-title">Modal Header</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="/subjects/<%= data.id %>/enrolled-students/<%= data.Students[i].id %>" class="form" method="POST">
+
+                                                            <select name="score">
+                                                                <% for(let i = 100; i>=0;i--){  %>
+                                                                    <option value="<%= [i] %>">
+                                                                        <%= [i] %>
+                                                                    </option>
+                                                                    <% }%>
+                                                            </select>
+                                                            <button>
+                                                                <input type="submit" value='Add' href="/subjects/<%= data.id %>/enrolled-students">
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <% }else{ %>
+                                        <%=data.Students[i].SubjectStudent.score%>
+                                            <% } %>
+
+
+                            </td>
+                            <td>
+                                <ol>
+
+                                    <%= (data.Students[i].SubjectStudent.score)? numToGrade(data.Students[i].SubjectStudent.score):'------' %> 
+                                </ol>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <% } %>
+            </table>
+        </div>
+        <a href="/">Home</a>
+
+
+    </section>
+    <script>
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

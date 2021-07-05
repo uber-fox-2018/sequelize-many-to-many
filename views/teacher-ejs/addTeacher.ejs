@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Add a Teacher</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/css/student-css/inputStudent.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+    <form action="/teachers/add" class="form" method="POST">
+        <h2>Register Teacher</h2>
+        <p type="First Name:">
+            <input placeholder="Write your first name here.." type="text" name="firstName"></input>
+        </p>
+        <p type="Last Name:"></p>
+        <input placeholder="Also your last name here.." type="text" name="lastName"></input>
+        </p>
+        <p type="Email:">
+            <input placeholder="Let us know how to contact you back.." type="text" name="email"></input>
+        </p>
+        <label for="your-name">subject</label> is
+        <select name="SubjectId">
+            <% for(let i = 0; i<subject.length;i++){  %>
+                <option value="<%= subject[i].id %>">
+                    <%= subject[i].subjectName %>
+                </option>
+                <% }%>
+        </select>
+        <button>
+            <input type="submit" value='Add'>
+        </button>
+        <a href="/">Home</a>
+    </form>
+
+</body>
+
+</html>
