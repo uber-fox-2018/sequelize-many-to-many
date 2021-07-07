@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+</head>
+<body>
+    <h1>DATA STUDENT</h1>
+
+    <a href="/student/addStudent">ADD STUDENT</a>
+
+    <br><br>
+    
+    <div class="container"> 
+    <table  class="table">
+            <thead>
+                 <tr>
+                    <th>id</th>
+                    <th>firstName</th>
+                    <th>lastName</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Options</th>
+                </tr>
+             </thead>
+            <tbody>
+                <tr>
+                     <%dataStudent.forEach((student) => {%>
+                        <td> <%= student.id %></td>
+                        <td> <%= student.firstName %></td>
+                        <td> <%= student.lastName %></td>
+                        <td><%= student.email %></td>
+                        <td>
+                            <a href="/student/addSubject/ <%= student.id %>">add Subject</a>
+                           
+                        </td>
+                        
+                        <td>
+                            <a href="/student/editStudent/<%= student.id %>">EDIT</a> | <a href="/student/delete/<%= student.id %>">DELETE</a>
+                        </td>
+
+                </tr>
+                <%})%>
+
+            </tbody>
+    </table>
+    <div>
+        <a href="/">BACK</a>
+    </div>
+</div>
+    
+</body>
+</html>
