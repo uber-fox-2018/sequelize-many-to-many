@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./partials/head') %>
+    <title>Uber-Fox</title>
+</head>
+
+<body>
+    <style>
+        header {
+            padding: 154px 0 100px;
+        }
+
+        @media (min-width: 992px) {
+            header {
+                padding: 156px 0 100px;
+            }
+        }
+
+        section {
+            padding: 150px 0;
+        }
+    </style>
+
+    <%- include('./partials/nav') %>
+
+    <header class="bg-primary text-white">
+        <div class="container text-center">
+            <h1>Welcome to Uber School</h1>
+            <p class="lead">Intelligence plus character, that is the goal of true education</p>
+        </div>
+    </header>
+
+    <%- include('./partials/scripts') %>
+</body>
+
+</html>

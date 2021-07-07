@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+    <title>Delete Subject</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+
+    <section style="padding-top: 80px">
+        <div class="container">
+            <div class="row" style="padding: 15px">
+                <h2>Delete subject</h2>
+            </div>
+            <div class="row" style="padding: 15px">
+                <form action="/subjects/delete/<%=subject.id%>" method="POST">
+                    <dl class="dl-horizontal">
+                        <dt>Subject name</dt>
+                        <dd>
+                            <%=subject.subject_name%>
+                        </dd>
+                    </dl>
+                    <a href="/subjects" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Delete" role="button" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <%- include('../partials/scripts') %>
+</body>
+
+</html>

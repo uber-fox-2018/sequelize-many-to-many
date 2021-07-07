@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+    <title>Delete Teacher</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+
+    <section style="padding-top: 80px">
+        <div class="container">
+            <div class="row" style="padding: 15px">
+                <h2>Delete teacher</h2>
+            </div>
+            <div class="row" style="padding: 15px">
+                <form action="/teachers/delete/<%=teacher.id%>" method="POST">
+                    <dl class="dl-horizontal">
+                        <dt>First name</dt>
+                        <dd>
+                            <%=teacher.first_name%>
+                        </dd>
+                        <dt>Last name</dt>
+                        <dd>
+                            <%=teacher.last_name%>
+                        </dd>
+                        <dt>Email address</dt>
+                        <dd>
+                            <%=teacher.email%>
+                        </dd>
+                        <dt>Subject</dt>
+                        <dd>
+                            <%=`${teacher.Subject == null ? 'unassigned' : teacher.Subject.subject_name}`%>
+                        </dd>
+                    </dl>
+                    <a href="/teachers" class="btn btn-secondary">Cancel</a>
+                    <input type="submit" value="Delete" role="button" class="btn btn-danger">
+                </form>
+            </div>
+        </div>
+
+    </section>
+
+    <%- include('../partials/scripts') %>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+<div class="row" style="padding: 15px">
+    <%for (validationError of validationErrors) {%>
+        <div class="alert alert-danger" role="alert">
+            Validation error: <%=validationError.message%>
+        </div>
+    <%}%>
+</div>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head')%>
+        <title>Teachers</title>
+</head>
+
+<body>
+    <%- include('../partials/nav')%>
+
+        <section style="padding-top: 80px">
+            <div class="container">
+                <div class="row" style="padding: 15px">
+                    <h2>Subjects</h2>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <a href="subjects/add" class="btn btn-primary">Add subject</a>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Subject Name</th>
+                                <th>Teachers</th>
+                                <th>Actions</th>
+                                <th>Options</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%for(subject of subjects) {%>
+                                <tr>
+                                    <td>
+                                        <%=subject.id%>
+                                    </td>
+                                    <td>
+                                        <%=subject.subject_name%>
+                                    </td>
+                                    <td>
+                                        <%let i = 0%>
+                                        <%subject.Teachers.forEach(teacher => {%>
+                                            <%= `${++i}. ${teacher.first_name} ${teacher.last_name}`%>
+                                            <br>
+                                        <%})%>
+                                    </td>
+                                    <td>
+                                        <a href="/subjects/<%=subject.id%>/enrolled-students" role="button" class="btn btn-info">Enrolled Students</a>
+                                    </td>
+                                    <td>
+                                        <a href="/subjects/edit/<%=subject.id%>" role="button" class="btn btn-success">Edit</a>
+                                        <a href="/subjects/delete/<%=subject.id%>" role="button" class="btn btn-danger">Delete</a>
+                                    </td>
+                                </tr>
+                                <%}%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <%- include('../partials/scripts')%>
+</body>
+
+</html>

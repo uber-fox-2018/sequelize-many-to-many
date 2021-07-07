@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head') %>
+        <title>Add subject</title>
+</head>
+
+<body>
+    <%- include('../partials/nav') %>
+
+        <section style="padding-top: 80px">
+            <div class="container">
+                <div class="row" style="padding: 15px">
+                    <h2>Add subject</h2>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <dl class="dl-horizontal">
+                        <dt>First name</dt>
+                        <dd>
+                            <%=student.first_name%>
+                        </dd>
+                        <dt>Last name</dt>
+                        <dd>
+                            <%=student.last_name%>
+                        </dd>
+                        <dt>Email address</dt>
+                        <dd>
+                            <%=student.email%>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%student.Subjects.forEach(subject => {%>
+                                <tr>
+                                    <td>
+                                        <%=subject.subject_name%>
+                                    </td>
+                                    <td>
+                                        <%=subject.Enrollment.score%>
+                                    </td>
+                                </tr>
+                            <%})%>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row" style="padding: 15px">
+                    <form action="/students/<%=student.id%>/add-subject" method="POST">
+                        <div class="form-group">
+                            <label for="subject_id">Choose subject</label>
+                            <select id="subject_id" name="subject_id" class="form-control">
+                                <option value="">--Choose subject--</option>
+                                <%subjects.forEach(subject => {%>
+                                    <option value="<%=subject.id%>"><%=subject.subject_name%></option>
+                                <%})%>
+                            </select>
+                        </div>
+                        <a href="/students" class="btn btn-secondary">Back</a>
+                        <input type="submit" value="Add subject" role="button" class="btn btn-info">
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <%- include('../partials/scripts') %>
+</body>
+
+</html>
